@@ -62,33 +62,33 @@ const handleScroll = (e) => {
   const delta = Math.sign(e.deltaY);
 
   //for page4 changing Bg
-  const onPage4 = currentPage === 3;
-  if (onPage4) {
-    indicatorTop += delta * stepPage4;
-    indicatorTop = Math.max(0, Math.min(indicatorTop, maxTop));
-    indicator.style.top = `${indicatorTop}px`;
-    updatePage4Background(indicatorTop, maxTop);
-    //goto page5
-    if (
-      delta > 0 &&
-      indicatorTop >= maxTop &&
-      currentPage < pageElements.length - 1
-    ) {
-      currentPage++;
-      showPage(currentPage);
-      indicatorTop = 0;
-      return;
-    }
+  // const onPage4 = currentPage === 3;
+  // if (onPage4) {
+  //   indicatorTop += delta * stepPage4;
+  //   indicatorTop = Math.max(0, Math.min(indicatorTop, maxTop));
+  //   indicator.style.top = `${indicatorTop}px`;
+  //   updatePage4Background(indicatorTop, maxTop);
+  //   //goto page5
+  //   if (
+  //     delta > 0 &&
+  //     indicatorTop >= maxTop &&
+  //     currentPage < pageElements.length - 1
+  //   ) {
+  //     currentPage++;
+  //     showPage(currentPage);
+  //     indicatorTop = 0;
+  //     return;
+  //   }
 
-    //goto page3
-    if (delta < 0 && indicatorTop <= 0 && currentPage > 0) {
-      currentPage--;
-      showPage(currentPage);
-      indicatorTop = maxTop;
-      return;
-    }
-    return;
-  }
+  //   //goto page3
+  //   if (delta < 0 && indicatorTop <= 0 && currentPage > 0) {
+  //     currentPage--;
+  //     showPage(currentPage);
+  //     indicatorTop = maxTop;
+  //     return;
+  //   }
+  //   return;
+  // }
 
   if (delta > 0) {
     if (currentPage < pageElements.length - 1) {

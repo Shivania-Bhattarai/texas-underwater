@@ -1,0 +1,44 @@
+.page-5 {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(
+        270deg,
+        rgba(0,0,0,0) 0%,
+        rgba(0,0,0,0) 100%
+    ),
+    linear-gradient(
+        0deg,
+        rgba(0,0,0,0.2),
+        rgba(0,0,0,0.2)),
+        url("/assets/images/Camp\ Mystic.png");
+    background-size: cover;
+    background-blend-mode: darken;
+    background-position: center;
+    background-repeat: no-repeat;    
+}
+
+.page-5 .main-header {
+    width: 1209px;
+    font-size: 45.44px;
+    font-weight: 200;
+    font-style: normal;
+    color: white;
+}
+
+.page-5 .main-content {
+    width: 739px;
+    font-size: 22.44px;
+    font-weight: 100;
+    font-style: normal;
+    color: white;
+    text-align: left;
+}
+
+.page-5 .image-source {
+    width: 739px;
+    font-size: 9.44px;
+    font-weight: 200;
+    font-style: normal;
+    color: white;
+
+}
