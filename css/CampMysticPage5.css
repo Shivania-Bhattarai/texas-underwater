@@ -1,0 +1,56 @@
+.page-5 {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, #000000 100%),
+    url("/assets/images/mystic.png");
+  background-size: cover;
+  background-blend-mode: darken;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: flex-end;
+  
+}
+.page-5 .background{
+    max-width: 769px;
+    color: #FFFFFF;
+    padding-top: 117px;
+    padding-right: 22px;
+
+}
+.page-5 h1{
+    font-size: 59.44px;
+    font-weight: 600;
+    line-height: 140%;
+}
+.page-5 p{
+    max-width: 690px;
+    font-size: 29.44px;
+    font-weight: 300;
+    line-height: 160%;
+}
+
+@media only screen and (max-width: 1240px) {
+  .page-5 .background {
+  padding-left: 15px;
+  padding-top: 22px;
+  color: #ffffff;
+}
+  .page-5 h1{
+    max-width: 606px;
+  }
+}
+@media only screen and (max-width: 740px) {
+  .page-5 h1{
+    width: 95vw;
+    font-size: 39.99px;
+    padding-bottom: 22px;
+  }
+  .page-5 p {
+    width: 95vw;
+    font-size: 19.99px;
+  }
+  .page-5{
+    background-position:center;
+  }
+}

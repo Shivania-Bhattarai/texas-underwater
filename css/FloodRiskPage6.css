@@ -1,0 +1,49 @@
+.page-6 {
+  background: linear-gradient(0deg, #252b30, #252b30),
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 56.9%, #000000 100%);
+  height: 100vh;
+  width: 100vw;
+}
+.page-6 .background {
+  display: flex;
+  gap: 191px;
+  padding: 91px 93px 0 201px;
+}
+/* .page-6 .left-container {
+  max-width: 568px;
+  max-height: 857px;
+  top: 94px;
+  left: 201px;
+  object-fit: contain;
+} */
+.page-6 .left-container .death-image{
+  height: 100%;
+  width: auto;
+  object-fit: contain; 
+}
+
+.page-6 .right-container {
+  color: white;
+  padding-bottom: 15px;
+}
+.page-6 .right-container h1 {
+  font-size: 59.44px;
+  font-weight: 600;
+  line-height: 140%;
+}
+.page-6 .right-container p {
+  font-size: 29.44px;
+  font-weight: 300;
+  line-height: 170%;
+}
+
+@media only screen and (max-width: 1440px) {
+  .page-6 .background {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 50px;
+  }
+  /* .page-6 .left-container {
+    flex-shrink: 1;
+  } */
+}
