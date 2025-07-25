@@ -1,0 +1,90 @@
+
+.page-2 {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(
+        270deg,
+        rgba(0,0,0,0.66) 0%,
+        rgba(0,0,0,0) 141.43% 
+    ),
+    linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
+    url("/assets/images/causebanner.jpg");
+  background-size: cover;
+  background-blend-mode: darken;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.page-2 .background {
+    color: #ffffff;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.page-2 .main-header {
+    font-size: 59.99px;
+    font-weight: 700;
+    line-height: 140%;
+    padding-bottom: 15px;
+}
+
+.page-2 .body-part {
+    max-width: 1004px;
+}
+
+.page-2 .main-content {
+    width: 90%;
+    font-size: 29.44px;
+    font-weight: 300;
+    line-height: 150%;
+    padding-bottom: 142px;
+}
+
+.page-2 .image-source {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    color: white;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 140%;
+}
+
+@media only screen and (max-width: 1240px) {
+    
+    .page-2 .main-header {
+        padding-right: 12px;
+    }
+
+    .page-2 .main-content {
+        font-size: 29.44px;
+    }
+
+    .page-2 .body-part {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .page-2 .main-header {
+        width: 95vw;
+        font-size: 39.99px;
+    }
+
+    .page-2 .main-content {
+        width: 95vw;
+        font-size: 19.99;
+    }
+
+    .page-2 .body-part {
+        width: 95vw;
+    }
+
+    .page-2 {
+        background-position: left;
+    }
+}
