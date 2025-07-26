@@ -1,0 +1,77 @@
+.page-9 {
+  background: linear-gradient(0deg, #252b30, #252b30),
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 56.9%, #000000 100%);
+  height: 100%;
+  width: 100%;
+}
+.page-9 .background {
+  display: flex;
+  justify-content: center;
+  gap: 55px;
+
+  padding: 129px 69px 0 76px;
+}
+.page-9 .left-container {
+  width: 50%;
+  max-height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.page-9 .left-container .relief-image {
+  /* max-width:  982px; */
+  width: 100%;
+  height: 65%;
+}
+.page-9 .left-container h1 {
+  font-size: 49.71px;
+  font-weight: 700;
+  line-height: 150%;
+  color: #edc355;
+}
+.page-9 .right-container {
+  /* max-width: 738px; */
+  width: 50%;
+  color: white;
+  padding-bottom: 15px;
+}
+.page-9 .right-container h1 {
+  font-size: 59.44px;
+  font-weight: 600;
+  line-height: 140%;
+  padding-bottom: 8px;
+}
+.page-9 .right-container span {
+  font-size: 59.44px;
+  font-weight: 600;
+  line-height: 140%;
+  color: #edc355;
+}
+.page-9 .right-container p {
+  font-size: 29.44px;
+  font-weight: 300;
+  line-height: 160%;
+  letter-spacing: 0.5px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .page-9 .background {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 50px;
+  }
+  .page-9 .left-container h1 {
+    font-size: 25px;
+  }
+
+  .page-9 .right-container h1 {
+    font-size: 30px;
+    padding-bottom: 20px;
+  }
+  .page-9 .right-container span {
+    font-size: 30px;
+  }
+  .page-9 .right-container p {
+    font-size: 15px;
+  }
+}

@@ -6,15 +6,12 @@ const pagesToLoad = [
   "./pages/GuadalupeRiverPage2.html",
   "./pages/ClimateChangePage3.html",
   "./pages/FloodImpactPage4.html",
-  "./pages/CampMysticPage5.html",
-  "./pages/FloodRiskPage6.html",
+  "./pages/FloodRiskPage5.html",
+  "./pages/CampMysticPage6.html",
   "./pages/HumanCostPage7.html",
   "./pages/DamagePage8.html",
   "./pages/FloodReliefPage9.html",
-  "./pages/LastPage.html"
-
-
-
+  "./pages/LastPage.html",
 ];
 let currentPage = 0;
 let indicatorTop = 0;
@@ -50,10 +47,10 @@ const showPage = (index) => {
   });
 
   //show 1st image imidiately
-  if (index === 3) {
-    indicatorTop = 0; // Reset scroll
-    updatePage4Background(0, maxTop);
-  }
+  // if (index === 3) {
+  //   indicatorTop = 0; // Reset scroll
+  //   updatePage4Background(0, maxTop);
+  // }
 };
 
 const handleScroll = (e) => {
