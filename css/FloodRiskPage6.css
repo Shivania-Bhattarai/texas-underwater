@@ -7,21 +7,17 @@
 .page-6 .background {
   display: flex;
   gap: 191px;
-  padding: 91px 93px 0 201px;
+  padding: 91px 93px 0 175px;
 }
-/* .page-6 .left-container {
+.page-6 .left-container {
   max-width: 568px;
   max-height: 857px;
-  top: 94px;
-  left: 201px;
-  object-fit: contain;
-} */
-.page-6 .left-container .death-image{
-  height: 100%;
-  width: auto;
-  object-fit: contain; 
+  padding-bottom: 25px;
 }
-
+.page-6 .left-container .death-image{
+  max-height: 700px;
+  padding-bottom: 15px;
+}
 .page-6 .right-container {
   color: white;
   padding-bottom: 15px;
@@ -31,19 +27,53 @@
   font-weight: 600;
   line-height: 140%;
 }
+.page-6 .right-container span {
+  font-size: 59.44px;
+  font-weight: 600;
+  line-height: 140%;
+  color: #edc355;
+}
 .page-6 .right-container p {
   font-size: 29.44px;
   font-weight: 300;
   line-height: 170%;
 }
-
-@media only screen and (max-width: 1440px) {
+@media only screen and (max-width: 1024px) {
+ 
+  .page-6 .right-container h1 {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 140%;
+}
+.page-6 .right-container p {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 170%;
+}
+.page-6 .right-container span {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 140%;
+  color: #edc355;
+}
+}
+@media only screen and (max-width: 1240px) {
   .page-6 .background {
+    gap: 35px;
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 50px;
   }
-  /* .page-6 .left-container {
-    flex-shrink: 1;
-  } */
+  /* .page-6 .right-container h1 {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 140%;
+}
+.page-6 .right-container p {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 170%;
+} */
+
+  
 }
