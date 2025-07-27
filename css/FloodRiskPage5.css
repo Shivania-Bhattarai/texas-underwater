@@ -1,0 +1,98 @@
+.page-5 .background {
+  height: 100vh;
+  width: 100vw;
+  background-image: 
+  /* linear-gradient(0deg, #252B30, #252B30), */ linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 56.9%,
+      #000000 100%
+    ),
+    linear-gradient(
+      270deg,
+      rgba(0, 0, 0, 0) -99.17%,
+      rgba(34, 45, 66, 0.2) 100%
+    ),
+    url("/assets/images/FloodImage.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.page-5 .background {
+  position: relative;
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+}
+.page-5 .left-container {
+  position: relative;
+  width: 0;
+  overflow: hidden;
+  transition: width 1s ease-in-out;
+}
+
+.page-5.active.scrolled .left-container {
+  width: 50%;
+  height: 100%;
+  object-fit: contain;
+}
+.page-5 .left-container img.image1 {
+  width: 100%;
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 2.9s ease, opacity 2.9s ease;
+}
+.page-5.active.scrolled .left-container img.image1 {
+  transform: translateX(0);
+  opacity: 1;
+}
+.page-5 .background img.image2 {
+  position: absolute;
+  bottom: 0;
+  right: -100px;
+  width: 150px;
+  opacity: 0;
+  transition: opacity 2.9s ease, right 2.9s ease;
+  z-index: 2;
+}
+
+.page-5.active.scrolled .background img.image2 {
+  opacity: 1;
+  right: 25px;
+  bottom: 22px;
+}
+
+.page-5 .right-container {
+  color: white;
+  padding: 73px 47px 0px 80px;
+}
+.page-5 .right-container h1 {
+  font-size: 59.44px;
+  font-weight: 600;
+  line-height: 140%;
+}
+.page-5 .right-container span {
+  font-size: 59.44px;
+  font-weight: 600;
+  line-height: 140%;
+  color: #edc355;
+}
+.page-5 .right-container p {
+  font-size: 29.44px;
+  font-weight: 300;
+  line-height: 170%;
+  letter-spacing: 0.5px;
+}
+
+.page-5.active.scrolled .right-container {
+  width: 65%;
+}
+
+.page-5 .image-source {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  color: white;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 140%;
+}

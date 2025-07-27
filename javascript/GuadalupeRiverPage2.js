@@ -10,8 +10,7 @@ export function initPage(initialTop, maxTop, indicatorEl) {
   }
 }
 
-export function handleScroll(delta, indicatorTop, maxTop) {
-  const step = 10;
+export function handleScroll(delta, indicatorTop, maxTop ,step=4) {
   indicatorTop += delta * step;
   indicatorTop = Math.max(0, Math.min(indicatorTop, maxTop));
 
@@ -44,9 +43,11 @@ export function handleScroll(delta, indicatorTop, maxTop) {
 function updateMask(progress) {
   if (!overlay) return;
   const size = 100 - progress * 100;
+
   // Adjust center: 15px left, 5px down from center
   const xOffset = -65;
   const yOffset = 45;
+  
   overlay.style.clipPath = `circle(${size}% at calc(50% - ${xOffset}px) calc(50% + ${yOffset}px))`;
 }
 
