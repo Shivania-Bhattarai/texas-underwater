@@ -1,3 +1,5 @@
+import * as page2 from "./GuadalupeRiverPage2.js";
+
 const indicator = document.getElementById("indicator");
 const container = document.getElementById("page-container");
 
@@ -46,6 +48,13 @@ const showPage = (index) => {
     element.classList.toggle("active", i === index);
   });
 
+
+  if (index === 1) {
+    indicatorTop = 0;
+    indicator.style.top = `${indicatorTop}px`;
+    page2.initPage(indicatorTop, maxTop, indicator); // ✅
+  }
+
   //show 1st image imidiately
   // if (index === 3) {
   //   indicatorTop = 0; // Reset scroll
@@ -57,6 +66,17 @@ const handleScroll = (e) => {
   e.preventDefault();
   if (pageElements.length === 0) return;
   const delta = Math.sign(e.deltaY);
+
+
+  // Handle special behavior for Page 2
+  if (currentPage === 1) {
+    const result = page2.handleScroll(delta, indicatorTop, maxTop);
+    indicatorTop = result.updatedTop;
+    currentPage = result.updatedPage;
+    indicator.style.top = `${indicatorTop}px`;
+    if (result.pageChanged) showPage(currentPage);
+    return;
+  }
 
   //for page4 changing Bg
   // const onPage4 = currentPage === 3;
@@ -112,6 +132,8 @@ const handleScroll = (e) => {
   }
   indicator.style.top = `${indicatorTop}px`;
 };
+
+
 
 window.addEventListener("wheel", handleScroll, { passive: false });
 window.onload = () => loadPageSequentially();
