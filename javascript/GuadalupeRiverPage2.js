@@ -1,53 +1,39 @@
-let overlay = null;
-let page2El = null;
+// GuadalupeRiverPage2.js
 
-export function initPage(initialTop, maxTop, indicatorEl) {
-  page2El = document.querySelector(".page-2");
-  overlay = page2El?.querySelector(".mask-overlay");
+export function revealPage2Layers() {
+  const container = document.querySelector(".page-2 .left-container");
+  if (!container) return;
 
-  if (overlay) {
-    updateMask(0); // Start fully covered
-  }
+  const layers = [
+    ".scale-img1",
+    ".scale-img2",
+    ".scale-img3",
+    ".scale-img4",
+  ];
+
+  layers.forEach((selector, index) => {
+    const el = container.querySelector(selector);
+    if (el) {
+      setTimeout(() => {
+        el.style.opacity = "1";
+      }, 600 * (index + 1));
+    }
+  });
 }
 
-export function handleScroll(delta, indicatorTop, maxTop ,step=4) {
-  indicatorTop += delta * step;
-  indicatorTop = Math.max(0, Math.min(indicatorTop, maxTop));
+export function hidePage2Layers() {
+  const container = document.querySelector(".page-2 .left-container");
+  if (!container) return;
 
-  // Animate within first 50%
-  const halfMax = maxTop / 2;
-  let progress = indicatorTop / halfMax;
-  progress = Math.max(0, Math.min(progress, 1));
+  const layers = [
+    ".scale-img1",
+    ".scale-img2",
+    ".scale-img3",
+    ".scale-img4",
+  ];
 
-  updateMask(progress);
-
-  let updatedPage = 1;
-  let pageChanged = false;
-
-  if (delta > 0 && indicatorTop >= maxTop) {
-    updatedPage = 2;
-    indicatorTop = 0;
-    pageChanged = true;
-  } else if (delta < 0 && indicatorTop <= 0) {
-    updatedPage = 0;
-    indicatorTop = maxTop;
-    pageChanged = true;
-  }
-
-  return {
-    updatedTop: indicatorTop,
-    updatedPage,
-    pageChanged,
-  };
+  layers.forEach((selector) => {
+    const el = container.querySelector(selector);
+    if (el) el.style.opacity = "0";
+  });
 }
-function updateMask(progress) {
-  if (!overlay) return;
-  const size = 100 - progress * 100;
-
-  // Adjust center: 15px left, 5px down from center
-  const xOffset = -65;
-  const yOffset = 45;
-  
-  overlay.style.clipPath = `circle(${size}% at calc(50% - ${xOffset}px) calc(50% + ${yOffset}px))`;
-}
-

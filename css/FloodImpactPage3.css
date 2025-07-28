@@ -1,13 +1,12 @@
 /* page4 */
-.page-4 {
+.page-3 {
   position: relative;
   width: 100vw;
   height: 100%;
   overflow: hidden;
   isolation: isolate;
 }
-
-.page-4 .content {
+.page-3 .content {
   position: relative;
   z-index: 4;
   width: 100%;
@@ -19,21 +18,27 @@
   flex-direction: column;
   align-items: flex-end;
 }
-.page-4 .content .content-header {
+.page-3 .content .content-header {
   width: 769px;
   font-size: 65px;
   font-weight: 600;
   line-height: 120%;
   padding-bottom: 15px;
 }
-.page-4 .content .content-body {
+.page-3 .content .content-header span{
+  color: #edc355;
+  font-size: 65px;
+  font-weight: 600;
+  line-height: 120%;
+}
+.page-3 .content .content-body {
   width: 690px;
   font-size: 29.44px;
   font-weight: 300;
   line-height: 140%;
 
 }
-.page-4 .background {
+.page-3 .background {
   position: absolute;
   inset: 0;
   isolation: isolate;
@@ -56,21 +61,21 @@
   border: 1px solid #252b30;
 }
 
-.page-4 .background .active {
+.page-3 .background .active {
   opacity: 1;
 }
 
-.page-4 .background .overlay {
+.page-3 .background .overlay {
   z-index: 2;
-  opacity: 0;
+  opacity: 1; 
   clip-path: inset(0 0 0 100%);
-  transition: none; /* Control manually via JS */
-  will-change: opacity, clip-path;
+  transition: clip-path 0.3s ease; 
+  will-change: clip-path;
   mix-blend-mode: normal;
   pointer-events: none;
 }
 
-.page-4 .image-source {
+.page-3 .image-source {
   position: fixed;
   bottom: 10px;
   right: 10px;

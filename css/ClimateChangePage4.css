@@ -1,41 +1,41 @@
 /* page3 */
 
-.page-3 {
+.page-4 {
   background: linear-gradient(270deg, #000000 0%, rgba(0, 0, 0, 0) 100%),
     linear-gradient(285.71deg, rgba(37, 43, 48, 0) -76.11%, #252b30 92.54%);
   height: 100%;
   width: 100%;
 }
-.page-3 .body-container {
+.page-4 .body-container {
   display: flex;
   justify-content: flex-start;
   padding: 134px 0px 0px 54px;
 }
-.page-3 .head {
+.page-4 .head {
   display: none;
   color: #ffffff;
   font-size: 48px;
   font-weight: 700;
   padding-bottom: 25px;
 }
-.page-3 .left-container {
+.page-4 .left-container {
   color: #ffffff;
   flex-shrink: 0;
 }
-.page-3 .top-header {
+.page-4 .top-header {
   max-width: 797px;
 
   font-size: 48px;
   font-weight: 700;
   padding-bottom: 25px;
 }
-.page-3 .main-content {
+.page-4 .main-content {
   max-width: 718px;
 
   font-size: 29.44px;
   font-weight: 300;
 }
-.page-3 .right-container {
+.page-4 .right-container {
   max-height: 891px;
   max-width: 1046px;
   display: flex;
@@ -120,7 +120,7 @@
   left: -140px;
   color: #3fd07a;
 }
-.page-3 .image-source {
+.page-4 .image-source {
   position: fixed;
   bottom: 10px;
   right: 10px;
@@ -131,54 +131,54 @@
 }
 
 @media only screen and (max-width: 1440px) {
-  .page-3 .left-container {
+  .page-4 .left-container {
     flex-shrink: 1;
   }
 }
 
 @media only screen and (max-width: 1207px) {
-  .page-3 .head {
+  .page-4 .head {
     display: block;
     padding: 134px 0px 0px 54px;
     width: 95vw;
   }
-  .page-3 .top-header {
+  .page-4 .top-header {
     display: none;
   }
-  .page-3 .body-container {
+  .page-4 .body-container {
     padding: 54px;
   }
 }
 @media only screen and (min-width: 1440px) {
-  .page-3 .body-container{
+  .page-4 .body-container{
     justify-content: center;
     gap: 150px;
   }
 }
 
 @media only screen and (max-width: 1024px) {
-  .page-3 .head {
+  .page-4 .head {
     display: flex;
     font-size: 38px;
     padding: 100px 0 15px 15px;
     width: 95vw;
   }
-  .page-3 .top-header {
+  .page-4 .top-header {
     display: none;
   }
-  .page-3 .body-container {
+  .page-4 .body-container {
     padding: 0px;
 
     flex-direction: column;
     padding-left: 20px;
     padding-bottom: 25px;
   }
-  .page-3 .main-content {
+  .page-4 .main-content {
     width: 95vw;
     font-size: 19.44px;
     flex-shrink: 0;
   }
-  .page-3 .right-container {
+  .page-4 .right-container {
     padding: 90px 140px 80px 140px;
 
     margin-top: 25px;
