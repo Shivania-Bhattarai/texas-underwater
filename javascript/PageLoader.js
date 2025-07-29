@@ -28,10 +28,7 @@ let pageElements = [];
 
 const loadPageSequentially = async () => {
   for (let i = 0; i < pagesToLoad.length; i++) {
-    const url = pagesToLoad[i];
-    // if(i===2){
-
-    
+    const url = pagesToLoad[i];    
     try {
       const res = await fetch(url);
       const html = await res.text();
@@ -49,7 +46,7 @@ const loadPageSequentially = async () => {
       console.error("Failed to load:", url, err);
     }
   }}
-// };
+
 
 const showPage = (index) => {
   pageElements.forEach((element, i) => {
