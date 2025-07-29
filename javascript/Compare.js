@@ -48,6 +48,6 @@ function drag(e) {
 function stopDrag() {
   isDragging = false;
 }
-document.querySelectorAll("img").forEach(img => {
+document.querySelectorAll("img").forEach((img) => {
   img.addEventListener("dragstart", (e) => e.preventDefault());
 });

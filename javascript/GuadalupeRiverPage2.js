@@ -1,5 +1,3 @@
-// GuadalupeRiverPage2.js
-
 export function revealPage2Layers() {
   const container = document.querySelector(".page-2 .left-container");
   if (!container) return;
@@ -16,7 +14,7 @@ export function revealPage2Layers() {
     if (el) {
       setTimeout(() => {
         el.style.opacity = "1";
-      }, 600 * (index + 1));
+      }, 500 * (index + 1));
     }
   });
 }
@@ -37,3 +35,4 @@ export function hidePage2Layers() {
     if (el) el.style.opacity = "0";
   });
 }
+

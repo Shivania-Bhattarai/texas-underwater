@@ -1,4 +1,4 @@
-import { revealPage2Layers, hidePage2Layers } from "./GuadalupeRiverPage2.js";
+import { revealPage2Layers, hidePage2Layers  } from "./GuadalupeRiverPage2.js";
 import * as compare from "./Compare.js";
 import * as page3 from "./FloodImpactPage3.js";
 
@@ -21,63 +21,127 @@ const pagesToLoad = [
 let currentPage = 0;
 let indicatorTop = 0;
 const indicatorHeight = 25;
-const step = 15;
+const step = 13;
 const stepPage4 = 3;
 const maxTop = window.innerHeight - indicatorHeight;
 let pageElements = [];
 
 const loadPageSequentially = async () => {
   for (let i = 0; i < pagesToLoad.length; i++) {
-    const url = pagesToLoad[i];    
+    const url = pagesToLoad[i];
     try {
       const res = await fetch(url);
       const html = await res.text();
 
       const pagediv = document.createElement("section");
       pagediv.classList.add("page", `page-${i + 1}`);
-      if (i === 0)
-         pagediv.classList.add("active");
+      if (i === 0) pagediv.classList.add("active");
       pagediv.innerHTML = html;
 
       container.appendChild(pagediv);
       pageElements.push(pagediv);
-      
     } catch (err) {
       console.error("Failed to load:", url, err);
     }
-  }}
-
+  }
+};
 
 const showPage = (index) => {
   pageElements.forEach((element, i) => {
     element.classList.toggle("active", i === index);
     const isActive = i === index;
 
+    //animate
     //page2
     if (isActive && currentPage === 1) {
+      const title = document.querySelector(".title");
+      const description = document.querySelector(".description");
+
+      title.classList.add("flyup");
+      description.classList.add("flyup");
       revealPage2Layers();
     } else {
       hidePage2Layers();
     }
-
     setTimeout(() => {
       compare.initCompareSlider();
     }, 100);
 
     //page3
-    if (i === 2) {
+    if (isActive && currentPage === 2) {
+      const title = element.querySelector(".content-header");
+      const description = element.querySelector(".content-body");
+
+      title.classList.add("flyin");
+      description.classList.add("flyin");
       const overlay = element.querySelector(".overlay");
       if (overlay) {
         overlay.style.clipPath = "inset(0 0 0 100%)";
       }
+    }
+    //page4
+    if(isActive && currentPage===3){
+      const title = element.querySelector(".title");
+      const description = element.querySelector(".description");
+
+      title.classList.add("flyup");
+      description.classList.add("flyup"); 
+    }
+    //page5
+     if(isActive && currentPage===4){
+      const title = element.querySelector(".title");
+      const description = element.querySelector(".description");
+
+      title.classList.add("flyin");
+      description.classList.add("flyin"); 
+    }
+    //page7
+    if(isActive && currentPage===6){
+      const title = element.querySelector(".title");
+      const description = element.querySelector(".description");
+
+      title.classList.add("flyin");
+      description.classList.add("flyin"); 
+    }
+    //page8
+    if(isActive && currentPage===7){
+      const title = element.querySelector(".title");
+      const description = element.querySelector(".description");
+      const image=element.querySelector(".death-image")
+
+      title.classList.add("flyin");
+      description.classList.add("flyin"); 
+      // image.classList.add("scale")
+    }
+      //page9
+    if(isActive && currentPage===8){
+      const title = element.querySelector(".title");
+      const description = element.querySelector(".description");
+      const image=element.querySelector(".cause-image")
+
+      title.classList.add("flyin");
+      description.classList.add("flyin"); 
+      // image.classList.add("scale")
+    }
+      //page10
+    if(isActive && currentPage===9){
+      const title = element.querySelector(".title");
+      const description = element.querySelector(".description");
+      const image=element.querySelector(".relief-image")
+
+      title.classList.add("flyin");
+      description.classList.add("flyin"); 
+      // image.classList.add("scale")
     }
   });
 };
 
 const handleScroll = (e) => {
   e.preventDefault();
+
   if (pageElements.length === 0) return;
   const delta = Math.sign(e.deltaY);
+  const step = currentPage === 2 || currentPage ===1 ? 5 : 13; 
 
   if (delta > 0) {
     if (currentPage < pageElements.length - 1) {
@@ -103,7 +167,7 @@ const handleScroll = (e) => {
     }
   }
   indicator.style.top = `${indicatorTop}px`;
-  page3.  updatePage3OverlayClip(currentPage, pageElements, indicatorTop, maxTop);
+  page3.updatePage3OverlayClip(currentPage, pageElements, indicatorTop, maxTop);
 };
 
 window.addEventListener("wheel", handleScroll, { passive: false });

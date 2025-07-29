@@ -9,54 +9,53 @@
   background-repeat: no-repeat;
   display: flex;
   justify-content: flex-end;
-  
 }
-.page-7 .background{
-    max-width: 769px;
-    color: #FFFFFF;
-    padding-top: 117px;
-    padding-right: 22px;
+.page-7 .background {
+  max-width: 769px;
+  color: #ffffff;
+  padding-top: 117px;
+  padding-right: 22px;
 }
-.page-7 h1{
-    font-size: 59.44px;
-    font-weight: 600;
-    line-height: 140%;
+.page-7 h1 {
+  font-size: 59.44px;
+  font-weight: 600;
+  line-height: 140%;
 }
-.page-7 span{
-    font-size: 59.44px;
-    font-weight: 600;
-    line-height: 140%;
-    color: #edc355;
-
+.page-7 span {
+  font-size: 59.44px;
+  font-weight: 600;
+  line-height: 140%;
+  color: #edc355;
 }
-.page-7 p{
-    max-width: 690px;
-    font-size: 29.44px;
-    font-weight: 300;
-    line-height: 160%;
+.page-7 p {
+  max-width: 690px;
+  font-size: 29.44px;
+  font-weight: 300;
+  line-height: 160%;
+  letter-spacing: 0.5px;
 }
 .page-7 .image-source {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    color: white;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 140%;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  color: white;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 140%;
 }
 
 @media only screen and (max-width: 1240px) {
   .page-7 .background {
-  padding-left: 15px;
-  padding-top: 22px;
-  color: #ffffff;
-}
-  .page-7 h1 span{
+    padding-left: 15px;
+    padding-top: 22px;
+    color: #ffffff;
+  }
+  .page-7 h1 span {
     max-width: 606px;
   }
 }
 @media only screen and (max-width: 740px) {
-  .page-7 h1 span{
+  .page-7 h1 span {
     width: 95vw;
     font-size: 39.99px;
     padding-bottom: 22px;
@@ -66,7 +65,7 @@
     width: 95vw;
     font-size: 19.99px;
   }
-  .page-7{
-    background-position:center;
+  .page-7 {
+    background-position: center;
   }
 }

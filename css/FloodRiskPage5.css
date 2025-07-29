@@ -1,8 +1,15 @@
 .page-5 .background {
   height: 100vh;
   width: 100vw;
-  background:
-    linear-gradient(rgba(25, 35, 52, 0.4), rgba(25, 35, 52, 0.4)),url("/assets/images/FloodImage.png");
+  background: linear-gradient(rgba(25, 35, 52, 0.4), rgba(25, 35, 52, 0.4)),
+    /* linear-gradient(0deg, #252B30, #252B30), */
+      linear-gradient(180deg, rgba(0, 0, 0, 0) 56.9%, #000000 100%),
+    linear-gradient(
+      270deg,
+      rgba(0, 0, 0, 0) -99.17%,
+      rgba(34, 45, 66, 0.2) 100%
+    ),
+    url("/assets/images/FloodImage.png");
   background-size: cover;
   background-blend-mode: darken;
   background-position: center;
@@ -15,7 +22,7 @@
 }
 .page-5 .left-container {
   position: relative;
-  width: 35%;
+  width: 30%;
   overflow: hidden;
 }
 
@@ -26,9 +33,12 @@
 }
 .page-5 .left-container img.image1 {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-position: bottom;
   transition: transform 1.9s ease, opacity 1.9s ease;
 }
-.img2-wrapper{
+.img2-wrapper {
   background: #00000080;
 }
 .page-5 .background img.image2 {
@@ -36,13 +46,13 @@
   right: 25px;
   bottom: 22px;
   width: 290px;
-  z-index:8;
+  z-index: 8;
 }
 
 /*  */
 .page-5 .image3-wrapper {
   position: absolute;
-  bottom: 22px;
+  bottom: 15px;
   left: calc(35% + 10px);
   z-index: 8;
 }
@@ -75,7 +85,7 @@
   font-size: 29.44px;
   font-weight: 300;
   line-height: 170%;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.51px;
 }
 
 .page-5.active .right-container {

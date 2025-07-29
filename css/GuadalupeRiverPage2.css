@@ -28,14 +28,14 @@
   opacity: 1 !important; /* Always visible */
   z-index: 3;
 }
-.page-2 .info-name{
+.page-2 .info-name {
   position: absolute;
-  bottom: 9%;
+  bottom: 14%;
   left: 5%;
- font-size: 17.85px;
+  font-size: 17.85px;
   font-weight: 500;
   line-height: 100%;
-  color: #edc355; 
+  color: #edc355;
 }
 
 .page-2 .right-container {
@@ -48,6 +48,7 @@
   font-weight: 700;
   line-height: 140%;
 }
+
 .page-2 .right-container span {
   font-size: 59.44px;
   font-weight: 700;
