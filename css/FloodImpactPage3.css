@@ -20,22 +20,22 @@
 }
 .page-3 .content .content-header {
   width: 769px;
-  font-size: 65px;
+  font-size: 59.44px;
   font-weight: 600;
-  line-height: 120%;
+  line-height: 140%;
   padding-bottom: 15px;
 }
 .page-3 .content .content-header span{
   color: #edc355;
-  font-size: 65px;
+  font-size: 59.44px;
   font-weight: 600;
-  line-height: 120%;
+  line-height: 140%;
 }
 .page-3 .content .content-body {
   width: 690px;
   font-size: 29.44px;
   font-weight: 300;
-  line-height: 140%;
+  line-height: 160%;
 
 }
 .page-3 .background {
@@ -68,11 +68,24 @@
 .page-3 .background .overlay {
   z-index: 2;
   opacity: 1; 
-  clip-path: inset(0 0 0 100%);
-  transition: clip-path 0.3s ease; 
+  /* clip-path: inset(0 0 0 100%); */
+  /* transition: clip-path 1.9s linear;  */
   will-change: clip-path;
   mix-blend-mode: normal;
   pointer-events: none;
+}
+.blink{
+        position: absolute;
+        top: 72%;
+        right: 20%;
+        background-color: red;
+        z-index: 9;
+        width: 10px;
+        border-radius: 50%;
+        height: 10px;
+        animation: blink 2.3s ease-in-out infinite alternate;
+        transform-origin: center;
+        visibility: hidden;
 }
 
 .page-3 .image-source {
@@ -91,3 +104,26 @@
   left: 50px;
   bottom: 25px;
 }
+@keyframes blink {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  40% {
+    opacity: 0.6;
+    transform: scale(2);
+  }
+  50%{
+    opacity: 1;
+    transform: scale(5);
+  }
+  60% {
+    opacity: 0.6;
+    transform: scale(2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+

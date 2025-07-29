@@ -1,24 +1,24 @@
-.page-10 .compare-container {
+.page-6 .compare-container {
   position: relative;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
 }
 
-.page-10 .img {
+.page-6 .img {
   position: absolute;
   top: 0;
   height: 100%;
   object-fit: cover;
 }
 
-.page-10 .img-left {
+.page-6 .img-left {
   left: 0;
   width: 100%;
   z-index: 1;
 }
 
-.page-10 .img-right-wrapper {
+.page-6 .img-right-wrapper {
   left: 0;
   width: 50%; /* initial position */
   overflow: hidden;
@@ -27,13 +27,13 @@
   transition: width 0.1s ease-out;
 }
 
-.page-10 .img-right {
+.page-6 .img-right {
   width: 100vw; /* full width image */
   height: 100%;
   object-fit: cover;
 }
 
-.page-10 .divider {
+.page-6 .divider {
   position: absolute;
   top: 0;
   left: 50%;
@@ -49,7 +49,7 @@
   -webkit-user-drag: none;
  pointer-events: auto;}
 
-.page-10 .divider::before {
+.page-6 .divider::before {
   content: "";
   position: absolute;
   width: 4px;
@@ -59,7 +59,7 @@
   transform: translateX(-50%);
 }
 
-.page-10 .circle {
+.page-6 .circle {
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -77,18 +77,18 @@
   pointer-events: auto;
 }
 
-.page-10 .left-arrow,
-.page-10 .right-arrow {
+.page-6 .left-arrow,
+.page-6 .right-arrow {
   width: 24px;
   height: 24px;
 }
 
-.page-10 .left-arrow {
+.page-6 .left-arrow {
   transform: rotate(180deg);
 }
 
-.page-10 .before-text,
-.page-10 .after-text {
+.page-6 .before-text,
+.page-6 .after-text {
   color: white;
   font-size: 36px;
   font-weight: 600;
@@ -102,14 +102,14 @@
   user-select: none;
 }
 
-.page-10 .before-text {
+.page-6 .before-text {
   position: absolute;
   top: 40px;
   left: -58px;
   transform: translateX(-100%);
 }
 
-.page-10 .after-text {
+.page-6 .after-text {
   position: absolute;
   top: 40px;
   right: -58px;

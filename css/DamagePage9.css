@@ -1,6 +1,7 @@
 .page-9 {
   background: linear-gradient(0deg, #252b30, #252b30),
     linear-gradient(180deg, rgba(0, 0, 0, 0) 56.9%, #000000 100%);
+
   height: 100%;
   width: 100%;
 }
@@ -13,22 +14,13 @@
 }
 .page-9 .left-container {
   width: 50%;
-  max-height: 700px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  max-height: 821px;
 }
-.page-9 .left-container .relief-image {
+.page-9 .left-container .cause-image {
   /* max-width:  982px; */
   width: 100%;
-  height: 65%;
 }
-.page-9 .left-container h1 {
-  font-size: 49.71px;
-  font-weight: 700;
-  line-height: 150%;
-  color: #edc355;
-}
+
 .page-9 .right-container {
   /* max-width: 738px; */
   width: 50%;
@@ -59,9 +51,6 @@
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 50px;
-  }
-  .page-9 .left-container h1 {
-    font-size: 25px;
   }
 
   .page-9 .right-container h1 {

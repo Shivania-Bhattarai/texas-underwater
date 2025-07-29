@@ -1,4 +1,4 @@
-.page-6 {
+.page-7 {
   height: 100%;
   width: 100%;
   background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, #000000 100%),
@@ -11,31 +11,31 @@
   justify-content: flex-end;
   
 }
-.page-6 .background{
+.page-7 .background{
     max-width: 769px;
     color: #FFFFFF;
     padding-top: 117px;
     padding-right: 22px;
 }
-.page-6 h1{
+.page-7 h1{
     font-size: 59.44px;
     font-weight: 600;
     line-height: 140%;
 }
-.page-6 span{
+.page-7 span{
     font-size: 59.44px;
     font-weight: 600;
     line-height: 140%;
     color: #edc355;
 
 }
-.page-6 p{
+.page-7 p{
     max-width: 690px;
     font-size: 29.44px;
     font-weight: 300;
     line-height: 160%;
 }
-.page-6 .image-source {
+.page-7 .image-source {
     position: fixed;
     bottom: 10px;
     left: 10px;
@@ -46,27 +46,27 @@
 }
 
 @media only screen and (max-width: 1240px) {
-  .page-6 .background {
+  .page-7 .background {
   padding-left: 15px;
   padding-top: 22px;
   color: #ffffff;
 }
-  .page-6 h1 span{
+  .page-7 h1 span{
     max-width: 606px;
   }
 }
 @media only screen and (max-width: 740px) {
-  .page-6 h1 span{
+  .page-7 h1 span{
     width: 95vw;
     font-size: 39.99px;
     padding-bottom: 22px;
   }
 
-  .page-6 p {
+  .page-7 p {
     width: 95vw;
     font-size: 19.99px;
   }
-  .page-6{
+  .page-7{
     background-position:center;
   }
 }

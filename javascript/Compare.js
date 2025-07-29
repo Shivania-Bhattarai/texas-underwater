@@ -1,12 +1,12 @@
 let isDragging = false;
 
-const comparePageIndex = 10;
+const comparePageIndex = 6;
 let compareContainer = null;
 let wrapper = null;
 let divider = null;
 
 export const initCompareSlider = () => {
-  compareContainer = document.querySelector(".page-10"); // since it's page-10
+  compareContainer = document.querySelector(".page-6"); // since it's page-10
   if (!compareContainer) return;
 
   wrapper = compareContainer.querySelector("#imgRightWrapper");

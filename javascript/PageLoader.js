@@ -1,5 +1,4 @@
 import { revealPage2Layers, hidePage2Layers } from "./GuadalupeRiverPage2.js";
-import * as page4 from "./FloodImpactPage4.js";
 import * as compare from "./Compare.js";
 import * as page3 from "./FloodImpactPage3.js";
 
@@ -12,17 +11,17 @@ const pagesToLoad = [
   "./pages/FloodImpactPage3.html",
   "./pages/ClimateChangePage4.html",
   "./pages/FloodRiskPage5.html",
-  "./pages/CampMysticPage6.html",
-  "./pages/HumanCostPage7.html",
-  "./pages/DamagePage8.html",
-  "./pages/FloodReliefPage9.html",
   "./pages/BeforeAndAfter.html",
+  "./pages/CampMysticPage7.html",
+  "./pages/HumanCostPage8.html",
+  "./pages/DamagePage9.html",
+  "./pages/FloodReliefPage10.html",
   "./pages/LastPage.html",
 ];
 let currentPage = 0;
 let indicatorTop = 0;
 const indicatorHeight = 25;
-const step = 10;
+const step = 15;
 const stepPage4 = 3;
 const maxTop = window.innerHeight - indicatorHeight;
 let pageElements = [];
@@ -30,22 +29,27 @@ let pageElements = [];
 const loadPageSequentially = async () => {
   for (let i = 0; i < pagesToLoad.length; i++) {
     const url = pagesToLoad[i];
+    // if(i===2){
+
+    
     try {
       const res = await fetch(url);
       const html = await res.text();
 
       const pagediv = document.createElement("section");
       pagediv.classList.add("page", `page-${i + 1}`);
-      if (i === 0) pagediv.classList.add("active");
+      if (i === 0)
+         pagediv.classList.add("active");
       pagediv.innerHTML = html;
 
       container.appendChild(pagediv);
       pageElements.push(pagediv);
+      
     } catch (err) {
       console.error("Failed to load:", url, err);
     }
-  }
-};
+  }}
+// };
 
 const showPage = (index) => {
   pageElements.forEach((element, i) => {

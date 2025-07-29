@@ -27,10 +27,20 @@
 
   font-size: 48px;
   font-weight: 700;
+  line-height: 140%;
   padding-bottom: 25px;
+}
+.page-4 .top-header span {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 140%;
+
+  padding-bottom: 25px;
+  color: #edc355;
 }
 .page-4 .main-content {
   max-width: 718px;
+  line-height: 160%;
 
   font-size: 29.44px;
   font-weight: 300;
@@ -150,7 +160,7 @@
   }
 }
 @media only screen and (min-width: 1440px) {
-  .page-4 .body-container{
+  .page-4 .body-container {
     justify-content: center;
     gap: 150px;
   }

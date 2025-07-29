@@ -1,99 +1,92 @@
 .page-1 {
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(
-        270deg,
-        rgba(0,0,0,0) 0%,
-        rgba(0,0,0,0) 100%
-    ),
-    linear-gradient(
-        0deg,
-        rgba(0,0,0,0.2),
-        rgba(0,0,0,0.2)),
-        url("/assets/images/impactbanner.jpg");
-    background-size: cover;
-    background-blend-mode: darken;
-    background-position: center;
-    background-repeat: no-repeat;    
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, #000000 100%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("/assets/images/impactbanner.jpg");
+  background-size: cover;
+  background-blend-mode: darken;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .page-1 .background {
-    padding-left: 99px;
-    padding-top: 46px;
-    color: #ffffff;
+  padding-left: 99px;
+  padding-top: 46px;
+  color: #ffffff;
 }
 
 .page-1 .top-header {
-    font-size: 29.44px;
-    font-weight: 300;
-    padding-bottom: 57px;
+  font-size: 29.44px;
+  font-weight: 300;
+  line-height: 140%;
+  padding-bottom: 57px;
 }
 
 .page-1 .main-header {
-    width: 1209px;
-    font-size: 69.44px;
-    font-weight: 700;
-    line-height: 140%;
+  width: 1209px;
+  font-size: 69.44px;
+  font-weight: 700;
+  line-height: 140%;
 }
 
 .page-1 .main-content {
-    width: 739px;
-    font-size: 29.44px;
-    font-weight: 200;
-    font-style: normal;
+  width: 739px;
+  font-size: 29.44px;
+  font-weight: 200;
+  line-height: 150%;
+  font-style: normal;
 }
 
 .page-1 .underline {
-    height: 12px;
-    width: 449px;
-    margin-bottom: 36px;
+  height: 12px;
+  width: 449px;
+  margin-bottom: 36px;
 }
 
 .page-1 .image-source {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    color: white;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 140%;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  color: white;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 140%;
 }
 
 @media only screen and (max-width: 1240px) {
-    .page-1 .background {
-        padding-left: 15px;
-        padding-top: 22px;
-        color: #ffffff;
-    }
+  .page-1 .background {
+    padding-left: 15px;
+    padding-top: 22px;
+    color: #ffffff;
+  }
 
-
-.page-1 .main-header {
+  .page-1 .main-header {
     max-width: 606px;
-}
+  }
 
-.page-1 .top-header {
+  .page-1 .top-header {
     font-size: 19.44px;
- } 
+  }
 }
 
 @media only screen and (max-width: 740px) {
-    .page-1 .main-header {
-        width: 95vw;
-        font-size: 39.99px;
-        padding-bottom: 22px;
-    }
+  .page-1 .main-header {
+    width: 95vw;
+    font-size: 39.99px;
+    padding-bottom: 22px;
+  }
 
-    .page-1 .main-content {
-        width: 95vw;
-        font-size: 19.99px;
-    }
+  .page-1 .main-content {
+    width: 95vw;
+    font-size: 19.99px;
+  }
 
-    .page-1 .underline {
-        display: none;
-    }
+  .page-1 .underline {
+    display: none;
+  }
 
-    .page-1 {
-        background-position: left;
-    }
+  .page-1 {
+    background-position: left;
+  }
 }
-
