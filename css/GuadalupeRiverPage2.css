@@ -5,6 +5,7 @@
   width: 100%;
 }
 .page-2 .background {
+  position: relative;
   height: 100%;
   display: flex;
   padding: 107px 50px 0px 55px;
@@ -30,8 +31,8 @@
 }
 .page-2 .info-name {
   position: absolute;
-  bottom: 14%;
-  left: 5%;
+  bottom: 8%;
+  left: 5.5%;
   font-size: 17.85px;
   font-weight: 500;
   line-height: 100%;
@@ -59,4 +60,58 @@
   font-size: 29.44px;
   font-weight: 300;
   line-height: 170%;
+}
+@media only screen and (max-width: 1440px){
+  .page-2 .background{
+    padding-top: 45px;
+    gap:8px;
+  }
+   .page-2 .right-container h1 {
+  font-size: 39px;
+  line-height: 140%;
+}
+ .page-2 .right-container span {
+  font-size: 39px;
+  line-height: 140%;
+}
+.page-2 .right-container p {
+  font-size: 19px;
+}
+}
+@media only screen and (max-width: 741px){
+  .page-2 .info-name{
+    bottom: 2%;
+    width: 95vw;
+    display: flex;
+    justify-content: center;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .page-2 .background {
+    padding-left: 15px;
+    padding-top: 22px;
+    flex-direction: column-reverse;
+    /* justify-content: space-around; */
+  }
+
+  .page-2 .right-container {
+    /* max-width: 606px; */
+    width: 100%;
+    height: 40%;
+  }
+ .page-2 .right-container h1 {
+  font-size: 32px;
+  line-height: 140%;
+}
+.page-2 .right-container span {
+  font-size: 32px;
+}
+.page-2 .right-container p {
+  font-size: 16px;
+}
+
+  .page-2 .left-container {
+    width: 100%;
+    height: 60%;
+  }
 }

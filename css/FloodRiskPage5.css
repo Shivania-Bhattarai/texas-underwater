@@ -45,7 +45,7 @@
   position: absolute;
   right: 25px;
   bottom: 22px;
-  width: 290px;
+  max-width: 290px;
   z-index: 8;
 }
 
@@ -62,7 +62,7 @@
 }
 
 .page-5 .image3 {
-  width: 200px;
+  max-width: 200px;
 }
 /*  */
 
@@ -91,7 +91,6 @@
 .page-5.active .right-container {
   width: 65%;
 }
-
 .page-5 .image-source {
   position: fixed;
   top: 10px;
@@ -100,4 +99,94 @@
   font-weight: 600;
   font-size: 12px;
   line-height: 140%;
+}
+.page-5 .right-container .image4 {
+  display: none;
+}
+
+@media only screen and (max-width: 1240px) {
+  .page-5 .right-container h1 {
+    font-size: 50px;
+  }
+  .page-5 .right-container span {
+    font-size: 50px;
+  }
+  .page-5 .right-container p {
+    font-size: 22px;
+  }
+  .image3 {
+    height: 127px;
+    width: 127px;
+  }
+  .image2 {
+    height: 133px;
+    width: 233px;
+  }
+}
+@media only screen and (max-height: 950px) {
+  .page-5 .right-container h1 {
+    font-size: 40px;
+  }
+  .page-5 .right-container span {
+    font-size: 40px;
+  }
+  .page-5 .right-container p {
+    font-size: 19px;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .page-5 .background {
+    background: linear-gradient(rgba(25, 35, 52, 0.4), rgba(25, 35, 52, 0.4)),
+      linear-gradient(0deg, #252b30, #252b30),
+      linear-gradient(180deg, rgba(0, 0, 0, 0) 56.9%, #000000 100%),
+      linear-gradient(
+        270deg,
+        rgba(0, 0, 0, 0) -99.17%,
+        rgba(34, 45, 66, 0.2) 100%
+      );
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-size: contain;
+  }
+  .page-5 .left-container {
+    display: none;
+  }
+  .page-5.active .right-container {
+    width: 90vw;
+  }
+  .page-5 .right-container {
+    padding-top: 78px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .page-5 .right-container .image4 {
+    display: block;
+    height: 50%;
+    /* width: 392px; */
+    padding-top: 15px;
+    width: 100%;
+  }
+  .page-5.active .image3-wrapper {
+    left: 15px;
+    bottom: 25px;
+  }
+  .page-5 .background img.image2 {
+    right: 25px;
+    bottom: 35px;
+  }
+  .page-5 .right-container h1 {
+    font-size: 30px;
+  }
+  .page-5 .right-container span {
+    font-size: 30px;
+  }
+  .page-5 .right-container p {
+    font-size: 14px;
+  }
+  .page-5 .image-source {
+    position: absolute;
+    top: 97%;
+    right: 10px;
+  }
 }

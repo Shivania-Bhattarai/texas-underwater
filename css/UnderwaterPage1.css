@@ -76,14 +76,16 @@
     font-size: 39.99px;
     padding-bottom: 22px;
   }
-
+  .page-1 .top-header{
+    font-size: 14px;
+  }
   .page-1 .main-content {
     width: 95vw;
     font-size: 19.99px;
-  }
-
-  .page-1 .underline {
     display: none;
+  }
+  .page-1 .underline {
+    width: 244.5px;
   }
 
   .page-1 {

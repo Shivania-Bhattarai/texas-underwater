@@ -15,6 +15,7 @@
   color: #ffffff;
   padding-top: 117px;
   padding-right: 22px;
+  padding-left: 15px;
 }
 .page-7 h1 {
   font-size: 59.44px;
@@ -55,15 +56,18 @@
   }
 }
 @media only screen and (max-width: 740px) {
-  .page-7 h1 span {
+  .page-7 h1 ,.page-7 span {
     width: 95vw;
-    font-size: 39.99px;
+    font-size: 30px;
     padding-bottom: 22px;
+    padding-left: 15px;
   }
 
   .page-7 p {
     width: 95vw;
     font-size: 19.99px;
+    padding-left: 15px;
+
   }
   .page-7 {
     background-position: center;

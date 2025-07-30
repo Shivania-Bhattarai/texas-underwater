@@ -29,21 +29,23 @@ let pageElements = [];
 const loadPageSequentially = async () => {
   for (let i = 0; i < pagesToLoad.length; i++) {
     const url = pagesToLoad[i];
+    // if(i===5){
     try {
       const res = await fetch(url);
       const html = await res.text();
 
       const pagediv = document.createElement("section");
       pagediv.classList.add("page", `page-${i + 1}`);
-      if (i === 0) pagediv.classList.add("active");
+      if (i === 0) 
+        pagediv.classList.add("active");
       pagediv.innerHTML = html;
 
       container.appendChild(pagediv);
       pageElements.push(pagediv);
     } catch (err) {
       console.error("Failed to load:", url, err);
-    }
-  }
+    }}
+  // }
 };
 
 const showPage = (index) => {

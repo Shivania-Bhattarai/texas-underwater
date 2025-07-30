@@ -78,43 +78,12 @@
   clip-path: inset(0 0 0 100%); /* start hidden */
 }
 
-.layer.overlay[src$=".gif"] {
-  mix-blend-mode: screen; /* or lighten */
+/* .layer.overlay[src$=".gif"] {
+  mix-blend-mode: screen; 
   opacity: 0.8;
   filter: brightness(1.1) contrast(1.1);
   z-index: 1;
-}
-/* .blink1,
-.blink2,
-.blink3,
-.blink4 {
-  position: absolute;
-
-background: #EDC355;
-  z-index: 9;
-  width: 29px;
-  border-radius: 50%;
-  height: 29px;
-  animation: blink 2.3s ease-in-out infinite alternate;
-  transform-origin: center;
-  /* visibility: hidden; */
-/* } */
-/* .blink1 {
-  top: 62.6%;
-  right: 14.1%;
-}
-.blink2 {
-  top: 38.0%;
-  right: 57.0%;
-}
-.blink3 {
-  top: 24.6%;
-  left: 22.1%;
-}
-.blink4 {
-  top: 28.0%;
-  left: 2.4%;
-}  */
+} */
 
 .page-3 .image-source {
   position: fixed;
@@ -127,30 +96,77 @@ background: #EDC355;
   z-index: 5;
 }
 .city-icon {
+  height: 200px;
+  width: 200px;
   position: absolute;
   z-index: 5;
   left: 50px;
   bottom: 25px;
 }
-@keyframes blink {
-  0% {
-    opacity: 1;
-    transform: scale(1);
+@media only screen and (max-width: 1440px) {
+  .layer{
+    object-fit: contain;
+    background-size: contain;
   }
-  40% {
-    opacity: 0.6;
-    transform: scale(2);
+  .page-3 .wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
-  50% {
-    opacity: 1;
-    transform: scale(5);
+  .city-icon {
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    z-index: 5;
+    left: 50px;
+    bottom: 25px;
+    /* display: none; */
   }
-  60% {
-    opacity: 0.6;
-    transform: scale(2);
+  .page-3 .content {
+    padding-right: 19px;
+    padding-top: 15px;
   }
-  100% {
-    opacity: 1;
-    transform: scale(1);
+  .page-3 .content .content-header {
+    font-size: 39px;
+    padding-bottom: 8px;
+  }
+  .page-3 .content .content-header span {
+    font-size: 39px;
+  }
+  .page-3 .content .content-body {
+    font-size: 19px;
+  }
+}
+
+@media only screen and (max-height: 1000px){
+  .page-3 .content .content-header {
+    font-size: 39px;
+  }
+  .page-3 .content .content-header span {
+    font-size: 39px;
+  }
+  .page-3 .content .content-body {
+    font-size: 19px;
+  } 
+}
+@media only screen and (max-width: 804px) {
+  .page-3 .content {
+    width: 95vw;
+    justify-content: center;
+    padding-right: 0;
+    margin-left: 15px;
+  }
+  .page-3 .content .content-header {
+    width: 95vw;
+    font-size: 29px;
+  }
+  .page-3 .content .content-header span {
+    width: 95vw;
+    font-size: 29px;
+  }
+  .page-3 .content .content-body {
+    width: 95vw;
+    font-size: 14px;
   }
 }
