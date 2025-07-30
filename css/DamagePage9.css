@@ -9,7 +9,6 @@
   display: flex;
   justify-content: center;
   gap: 55px;
-
   padding: 129px 69px 0 76px;
 }
 .page-9 .left-container {
@@ -46,11 +45,35 @@
   letter-spacing: 0.5px;
 }
 
+@media only screen and (max-height: 900px){
+  .page-9 .background{
+    padding-top: 25px;
+  }
+  .page-9 .right-container h1 {
+    font-size: 40px;
+    padding-bottom: 20px;
+  }
+  .page-9 .right-container span {
+    font-size: 40px;
+  }
+  .page-9 .right-container p {
+    font-size: 22px;
+  }
+}
 @media only screen and (max-width: 1024px) {
   .page-9 .background {
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 50px;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 15px;
+  }
+  .page-9 .left-container{
+    width: 45vw;
+  }
+  .page-9 .right-container{
+    width: 95vw;
   }
 
   .page-9 .right-container h1 {
@@ -62,5 +85,13 @@
   }
   .page-9 .right-container p {
     font-size: 15px;
+  }
+}
+@media only screen and (max-width: 650px){
+  .page-9 .left-container{
+    width: 80vw;
+  }
+  .page-9 .background{
+    gap: 35px;
   }
 }

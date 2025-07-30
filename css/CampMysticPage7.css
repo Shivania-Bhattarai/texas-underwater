@@ -55,21 +55,49 @@
     max-width: 606px;
   }
 }
-@media only screen and (max-width: 740px) {
-  .page-7 h1 ,.page-7 span {
+@media only screen and (max-height: 900px){
+   .page-7 h1 {
     width: 95vw;
     font-size: 30px;
     padding-bottom: 22px;
     padding-left: 15px;
+  }
+  .page-7 span {
+    width: 95vw;
+    font-size: 35px;
+  }
+
+  .page-7 p {
+    width: 95vw;
+    font-size: 20px;
+    padding-left: 15px;
+  } 
+}
+@media only screen and (max-width: 740px) {
+  .page-7 {
+    background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 100%),
+      url("/assets/images/mystic.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .page-7 h1 {
+    width: 95vw;
+    font-size: 40px;
+    padding-bottom: 22px;
+    padding-left: 15px;
+  }
+  .page-7 span {
+    width: 95vw;
+    font-size: 40px;
   }
 
   .page-7 p {
     width: 95vw;
     font-size: 19.99px;
     padding-left: 15px;
-
   }
-  .page-7 {
-    background-position: center;
+  .page-7 .background {
+    padding-top: 78px;
   }
 }

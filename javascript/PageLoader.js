@@ -29,7 +29,7 @@ let pageElements = [];
 const loadPageSequentially = async () => {
   for (let i = 0; i < pagesToLoad.length; i++) {
     const url = pagesToLoad[i];
-    // if(i===5){
+    // if(i===9){
     try {
       const res = await fetch(url);
       const html = await res.text();
@@ -172,5 +172,29 @@ const handleScroll = (e) => {
   page3.updatePage3OverlayClip(currentPage, pageElements, indicatorTop, maxTop);
 };
 
+// MOBILE SWIPE SUPPORT
+let touchStartY = 0;
+
+window.addEventListener("touchstart", (e) => {
+  touchStartY = e.touches[0].clientY;
+}, { passive: true });
+
+window.addEventListener("touchend", (e) => {
+  const touchEndY = e.changedTouches[0].clientY;
+  const deltaY = touchStartY - touchEndY;
+
+  // Simple swipe threshold
+  if (Math.abs(deltaY) > 50) {
+    const fakeEvent = {
+      deltaY: deltaY,
+      preventDefault: () => {},
+    };
+    handleScroll(fakeEvent);
+  }
+}, { passive: true });
+
+// MOUSE SCROLL SUPPORT
 window.addEventListener("wheel", handleScroll, { passive: false });
+
+
 window.onload = () => loadPageSequentially();

@@ -177,9 +177,7 @@
   }
 
   .page-4 .main-content {
-
-    font-size: 19.44px;
-
+    font-size: 22px;
   }
 }
 @media only screen and (max-width: 1207px) {
@@ -284,6 +282,16 @@
     left: -55px;
     color: #3fd07a;
   }
+  .label h4 {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 600;
+}
+.label p {
+  font-size: 9.13px;
+  margin-top: 4px;
+  /* width: 50px; */
+}
 }
 
 /* animation */

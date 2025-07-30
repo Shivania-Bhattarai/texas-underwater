@@ -39,22 +39,69 @@
   line-height: 170%;
   letter-spacing: 0.5px;
 }
-@media only screen and (max-width: 1024px) {
-  .page-8 .right-container h1 {
-    font-size: 30px;
-  }
-  .page-8 .right-container p {
-    font-size: 15px;
-  }
-  .page-8 .right-container span {
-    font-size: 30px;
-  }
+.background .image-source {
+  display: none;
 }
+
 @media only screen and (max-width: 1240px) {
   .page-8 .background {
     gap: 35px;
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 50px;
+  }
+}
+@media only screen and (max-height: 900px){
+  .page-8 .background{
+    gap: 20px;
+    padding-top: 25px;
+  }
+  .page-8 .right-container h1 {
+    font-size: 32px;
+  }
+  .page-8 .right-container p {
+    font-size: 22px;
+  }
+  .page-8 .right-container span {
+    font-size: 32px;
+  }
+  .page-8 .left-container .death-image {
+    width: 568px;
+    height: 857px;
+  }
+
+}
+
+@media only screen and (max-width: 1024px) {
+  
+  .page-8 .background {
+    flex-direction: column-reverse;
+  }
+  .page-8 .left-container {
+    display: flex;
+    justify-content: center;
+  }
+  .page-8 .left-container .death-image {
+    width: 300px;
+    height: 457px;
+  }
+    .page-8 .right-container h1 {
+    font-size: 32px;
+  }
+  .page-8 .right-container p {
+    font-size: 16px;
+  }
+  .page-8 .right-container span {
+    font-size: 30px;
+  }
+  .background .image-source {
+    display: block;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    color: white;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 140%;
   }
 }

@@ -54,7 +54,7 @@
   letter-spacing: 0.5px;
 }
 
-@media only screen and (max-width: 1024px) {
+/* @media only screen and (max-width: 1024px) {
   .page-10 .background {
     padding-left: 15px;
     padding-right: 15px;
@@ -73,5 +73,59 @@
   }
   .page-10 .right-container p {
     font-size: 15px;
+  }
+} */
+
+@media only screen and (max-height: 900px){
+  .page-10 .background{
+    padding-top: 25px;
+  }
+  .page-10 .right-container h1 {
+    font-size: 40px;
+    padding-bottom: 20px;
+  }
+  .page-10 .right-container span {
+    font-size: 40px;
+  }
+  .page-10 .right-container p {
+    font-size: 22px;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .page-10 .background {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 50px;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 25px;
+  }
+  .page-10 .left-container{
+    width: 45vw;
+  }
+  .page-10 .right-container{
+    width: 95vw;
+  }
+
+  .page-10 .right-container h1 {
+    font-size: 30px;
+    padding-bottom: 20px;
+  }
+  .page-10 .right-container span {
+    font-size: 30px;
+  }
+  .page-10 .right-container p {
+    font-size: 15px;
+  }
+  .page-10 .left-container h1{
+    font-size: 25px;
+  }
+}
+@media only screen and (max-width: 650px){
+  .page-10 .left-container{
+    width: 80vw;
+  }
+  .page-10 .background{
+    gap: 35px;
   }
 }

@@ -42,8 +42,8 @@
   position: absolute;
   inset: 0;
   isolation: isolate;
-  /* background: #252b30; */
-  background: #3a4043;
+  background: #252b30;
+  /* background: #3a4043; */
   z-index: 1;
   opacity: 1;
   /* filter: brightness(1.05); */
@@ -117,11 +117,8 @@
   .city-icon {
     height: 150px;
     width: 150px;
-    position: absolute;
-    z-index: 5;
-    left: 50px;
+    left: 25px;
     bottom: 25px;
-    /* display: none; */
   }
   .page-3 .content {
     padding-right: 19px;
@@ -159,14 +156,20 @@
   }
   .page-3 .content .content-header {
     width: 95vw;
-    font-size: 29px;
+    font-size: 30px;
   }
   .page-3 .content .content-header span {
     width: 95vw;
-    font-size: 29px;
+    font-size: 30px;
   }
   .page-3 .content .content-body {
     width: 95vw;
-    font-size: 14px;
+    font-size: 16px;
+  }
+  .city-icon {
+    height: 100px;
+    width: 100px;
+    left: 15px;
+    bottom: 35px;
   }
 }
