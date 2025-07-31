@@ -8,6 +8,7 @@ html,
 body {
   overscroll-behavior: none;
   overflow: hidden;
+  scroll-behavior: smooth;
 }
 .scroll-indicator {
   position: fixed;
@@ -17,7 +18,7 @@ body {
   height: 125px;
   background: linear-gradient(to bottom, black, white);
   z-index: 10;
-  transition: top 0.1s ease;
+  transition: top 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 #page-container {

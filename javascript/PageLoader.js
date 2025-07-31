@@ -1,4 +1,4 @@
-import { revealPage2Layers, hidePage2Layers  } from "./GuadalupeRiverPage2.js";
+import { revealPage2Layers, hidePage2Layers } from "./GuadalupeRiverPage2.js";
 import * as compare from "./Compare.js";
 import * as page3 from "./FloodImpactPage3.js";
 
@@ -36,15 +36,15 @@ const loadPageSequentially = async () => {
 
       const pagediv = document.createElement("section");
       pagediv.classList.add("page", `page-${i + 1}`);
-      if (i === 0) 
-        pagediv.classList.add("active");
+      if (i === 0) pagediv.classList.add("active");
       pagediv.innerHTML = html;
 
       container.appendChild(pagediv);
       pageElements.push(pagediv);
     } catch (err) {
       console.error("Failed to load:", url, err);
-    }}
+    }
+  }
   // }
 };
 
@@ -82,61 +82,60 @@ const showPage = (index) => {
       }
     }
     //page4
-    if(isActive && currentPage===3){
+    if (isActive && currentPage === 3) {
       const title = element.querySelector(".title");
-        const head = element.querySelector(".top-header")
+      const head = element.querySelector(".top-header");
 
       const description = element.querySelector(".description");
 
       title.classList.add("flyin");
-      description.classList.add("flyin"); 
-            head.classList.add("flyin")
-
+      description.classList.add("flyin");
+      head.classList.add("flyin");
     }
     //page5
-     if(isActive && currentPage===4){
+    if (isActive && currentPage === 4) {
       const title = element.querySelector(".title");
       const description = element.querySelector(".description");
 
       title.classList.add("flyin");
-      description.classList.add("flyin"); 
+      description.classList.add("flyin");
     }
     //page7
-    if(isActive && currentPage===6){
+    if (isActive && currentPage === 6) {
       const title = element.querySelector(".title");
       const description = element.querySelector(".description");
 
       title.classList.add("flyin");
-      description.classList.add("flyin"); 
+      description.classList.add("flyin");
     }
     //page8
-    if(isActive && currentPage===7){
+    if (isActive && currentPage === 7) {
       const title = element.querySelector(".title");
       const description = element.querySelector(".description");
-      const image=element.querySelector(".death-image")
+      const image = element.querySelector(".death-image");
 
       title.classList.add("flyin");
-      description.classList.add("flyin"); 
+      description.classList.add("flyin");
       // image.classList.add("scale")
     }
-      //page9
-    if(isActive && currentPage===8){
+    //page9
+    if (isActive && currentPage === 8) {
       const title = element.querySelector(".title");
       const description = element.querySelector(".description");
-      const image=element.querySelector(".cause-image")
+      const image = element.querySelector(".cause-image");
 
       title.classList.add("flyin");
-      description.classList.add("flyin"); 
+      description.classList.add("flyin");
       // image.classList.add("scale")
     }
-      //page10
-    if(isActive && currentPage===9){
+    //page10
+    if (isActive && currentPage === 9) {
       const title = element.querySelector(".title");
       const description = element.querySelector(".description");
-      const image=element.querySelector(".relief-image")
+      const image = element.querySelector(".relief-image");
 
       title.classList.add("flyin");
-      description.classList.add("flyin"); 
+      description.classList.add("flyin");
       // image.classList.add("scale")
     }
   });
@@ -147,7 +146,18 @@ const handleScroll = (e) => {
   if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
   if (pageElements.length === 0) return;
   const delta = Math.sign(e.deltaY);
-  const step = currentPage === 2 || currentPage ===1 ? 5 : 13; 
+
+  // Calculate step size with mobile optimization
+  const isMobile = "ontouchstart" in window;
+
+  let step;
+  if (isMobile) {
+    // Same step size for all pages on mobile
+    step = 13;
+  } else {
+    // different step sizes for different pages on desktop
+    step = currentPage === 2 || currentPage === 1 ? 5 : 11;
+  }
 
   if (delta > 0) {
     if (currentPage < pageElements.length - 1) {
@@ -176,34 +186,90 @@ const handleScroll = (e) => {
   page3.updatePage3OverlayClip(currentPage, pageElements, indicatorTop, maxTop);
 };
 
-// MOBILE SWIPE SUPPORT
+// SMOOTH MOBILE SWIPE SUPPORT
 let touchStartX = 0;
 let touchStartY = 0;
+let isTouching = false;
 
-window.addEventListener("touchstart", (e) => {
-  touchStartY = e.touches[0].clientY;
-  touchStartX = e.touches[0].clientX;
-}, { passive: true });
+window.addEventListener(
+  "touchstart",
+  (e) => {
+    touchStartY = e.touches[0].clientY;
+    touchStartX = e.touches[0].clientX;
+    isTouching = true;
+  },
+  { passive: true }
+);
 
-window.addEventListener("touchend", (e) => {
-  const touchEndY = e.changedTouches[0].clientY;
-  const touchEndX = e.changedTouches[0].clientX;
+window.addEventListener(
+  "touchmove",
+  (e) => {
+    if (!isTouching) return;
 
-  const deltaY = touchStartY - touchEndY;
-  const deltaX = touchStartX - touchEndX;
+    const touchCurrentY = e.touches[0].clientY;
+    const touchCurrentX = e.touches[0].clientX;
 
-  if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 50) {
-    const fakeEvent = {
-      deltaY: deltaY,
-      preventDefault: () => {},
-    };
-    handleScroll(fakeEvent);
-  }
-}, { passive: true });
+    const deltaY = touchStartY - touchCurrentY;
+    const deltaX = touchStartX - touchCurrentX;
 
+    // Only handle vertical swipes
+    if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 10) {
+      e.preventDefault(); // Prevent default scrolling
+
+      // Create multiple smaller scroll events for smoother movement
+      const steps = Math.ceil(Math.abs(deltaY) / 20);
+      const stepDelta = deltaY / steps;
+
+      for (let i = 0; i < steps; i++) {
+        setTimeout(() => {
+          const fakeEvent = {
+            deltaY: stepDelta,
+            preventDefault: () => {},
+          };
+          handleScroll(fakeEvent);
+        }, i * 16); // 16ms intervals for smooth 60fps
+      }
+      // Reset touch start position for continuous scrolling
+      touchStartY = touchCurrentY;
+      touchStartX = touchCurrentX;
+    }
+  },
+  { passive: false }
+);
+
+window.addEventListener(
+  "touchend",
+  (e) => {
+    isTouching = false;
+  },
+  { passive: true }
+);
+
+// Alternative: Simplified approach with better thresholds
+window.addEventListener(
+  "touchend",
+  (e) => {
+    const touchEndY = e.changedTouches[0].clientY;
+    const touchEndX = e.changedTouches[0].clientX;
+
+    const deltaY = touchStartY - touchEndY;
+    const deltaX = touchStartX - touchEndX;
+    // Reduced threshold from 50px to 30px for more responsive feel
+    if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 30) {
+      // Scale the delta to match mouse wheel sensitivity
+      const scaledDelta = deltaY * 0.5;
+
+      const fakeEvent = {
+        deltaY: scaledDelta,
+        preventDefault: () => {},
+      };
+      handleScroll(fakeEvent);
+    }
+  },
+  { passive: true }
+);
 
 // MOUSE SCROLL SUPPORT
 window.addEventListener("wheel", handleScroll, { passive: false });
-
 
 window.onload = () => loadPageSequentially();
