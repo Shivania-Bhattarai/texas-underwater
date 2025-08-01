@@ -140,3 +140,11 @@
     gap: 35px;
   }
 }
+@media only screen and (max-width: 400px){
+ .page-10 .left-container .relief-image {
+  /* max-width:  982px; */
+  width: 90%;
+  height: 55%;
+}
+
+}

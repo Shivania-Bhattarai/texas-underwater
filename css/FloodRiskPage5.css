@@ -174,6 +174,7 @@
   .page-5 .background img.image2 {
     right: 25px;
     bottom: 10%;
+
   }
   .page-5 .right-container h1 {
     font-size: 30px;
@@ -188,5 +189,16 @@
     position: absolute;
     top: 97%;
     right: 10px;
+  }
+}
+@media only screen and (max-width: 500px){
+   .page-5.active .image3-wrapper {
+    height: 100px;
+    width: 100px;
+  }
+  .page-5 .background img.image2 {
+    height: 100px;
+    width: 200px;
+    
   }
 }

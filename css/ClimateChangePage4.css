@@ -295,6 +295,21 @@
 }
 }
 
+@media only screen and (max-width: 400px){
+  .label.top-right {
+    /* top: 70px; */
+    right: -50px;
+    color: #ffcc00;
+  }
+  .label.top-left {
+    /* top: px; */
+    left: -50px;
+    color: #3fd07a;
+  } 
+  .cycle-diagram{
+    padding-top: 15px;
+  }
+}
 /* animation */
 .rotate {
   animation: spin 8s linear infinite;

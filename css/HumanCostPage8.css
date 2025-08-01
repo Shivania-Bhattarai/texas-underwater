@@ -102,3 +102,9 @@
     font-size: 30px;
   }
 }
+@media only screen and (max-width: 400px){
+ .page-8 .left-container .death-image {
+    width: 200px;
+    height: 357px;
+  } 
+}
