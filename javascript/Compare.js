@@ -8,7 +8,7 @@ let wrapper = null;
 let divider = null;
 let circle = null;
 let isVertical = false;
-let scrollListener = null; // Track scroll listener for cleanup
+let scrollListener = null;
 
 export const initCompareSlider = () => {
   compareContainer = document.querySelector(".page-6");
@@ -19,8 +19,12 @@ export const initCompareSlider = () => {
   circle = compareContainer.querySelector(".circle");
 
   if (!wrapper || !divider || !circle) return;
+  
   // Determine layout direction based on screen width
   updateLayoutDirection();
+
+  // Initialize with 50% position
+  initializePositions();
 
   // Always sync divider with scroll
   syncDividerWithScroll();
@@ -32,7 +36,6 @@ export const initCompareSlider = () => {
   // Add global listeners for move and end events
   document.addEventListener("mousemove", drag);
   document.addEventListener("mouseup", stopDrag);
-
   document.addEventListener("touchmove", drag, { passive: false });
   document.addEventListener("touchend", stopDrag);
 
@@ -44,62 +47,130 @@ export const initCompareSlider = () => {
   // Update layout direction on resize
   window.addEventListener("resize", () => {
     updateLayoutDirection();
-    // Re-initialize scroll sync after layout change
+    initializePositions();
     setTimeout(() => {
       syncDividerWithScroll();
     }, 100);
   });
 };
 
-function syncDividerWithScroll() {
-  if (!compareContainer || !divider) {
-    return;
+function initializePositions() {
+  if (!wrapper || !divider) return;
+  
+  if (isVertical) {
+    // Mobile: Initialize at 50% from top
+    setVerticalPosition(50);
+  } else {
+    // Desktop: Initialize at 50% from left
+    setHorizontalPosition(50);
   }
+}
+
+function setVerticalPosition(percent) {
+  // Clamp percent between 0 and 100
+  percent = Math.max(0, Math.min(100, percent));
+  
+  // Get actual viewport height
+  const viewportHeight = window.innerHeight;
+  
+  // Calculate exact pixel position for divider
+  const dividerPosition = (percent / 100) * viewportHeight;
+  
+  // CRITICAL FIX: Container should fill from top to divider position
+  // This ensures no gap between container and divider
+  wrapper.style.height = `${dividerPosition}px`;
+  wrapper.style.width = '100vw';
+  wrapper.style.maxHeight = 'none'; // Remove any max-height constraints
+  wrapper.style.minHeight = '0px';  // Allow very small heights
+  wrapper.style.top = '0px';
+  wrapper.style.left = '0px';
+  wrapper.style.position = 'absolute';
+  
+  // Position divider at the exact bottom edge of the container
+  divider.style.top = `${dividerPosition}px`;
+  divider.style.left = '50%';
+  divider.style.transform = 'translate(-50%, -50%)';
+  divider.style.position = 'fixed';
+  
+  // Ensure the right image is positioned to show the correct portion
+  const rightImg = wrapper.querySelector('.img-right');
+  if (rightImg) {
+    rightImg.style.top = '0px';
+    rightImg.style.left = '0px';
+    rightImg.style.width = '100vw';
+    rightImg.style.height = '100vh'; // Full viewport height
+    rightImg.style.objectFit = 'cover';
+    rightImg.style.objectPosition = 'center top'; // Align to top
+  }
+  
+  // Force repaint for Samsung browsers
+  if (navigator.userAgent.includes('SamsungBrowser') || navigator.userAgent.includes('Samsung')) {
+    wrapper.offsetHeight; // Trigger reflow
+    if (rightImg) rightImg.offsetHeight;
+  }
+}
+
+function setHorizontalPosition(percent) {
+  // Clamp percent between 0 and 100
+  percent = Math.max(0, Math.min(100, percent));
+  
+  // Desktop: horizontal positioning
+  wrapper.style.width = `${percent}%`;
+  wrapper.style.height = '100vh';
+  wrapper.style.maxHeight = '';
+  wrapper.style.top = '0px';
+  wrapper.style.left = '0px';
+  
+  divider.style.left = `${percent}%`;
+  divider.style.top = '50%';
+  divider.style.transform = 'translate(-50%, -50%)';
+}
+
+function syncDividerWithScroll() {
+  if (!compareContainer || !divider) return;
 
   // Remove existing scroll listener if it exists
   if (scrollListener) {
     compareContainer.removeEventListener("scroll", scrollListener);
-    if (wrapper) wrapper.removeEventListener("scroll", scrollListener);
   }
 
   // Only add scroll sync for mobile (vertical layout)
-  if (!isVertical) {
-    return;
-  }
+  if (!isVertical) return;
 
   // Create new scroll listener for mobile only
   scrollListener = () => {
     // Don't sync during drag operations
-    if (isDragging) {
-      return;
-    }
+    if (isDragging) return;
+    
     // Mobile: sync divider horizontal position with container's horizontal scroll
     const scrollLeft = compareContainer.scrollLeft;
     const containerWidth = compareContainer.offsetWidth;
     const scrollWidth = compareContainer.scrollWidth;
     const maxScroll = scrollWidth - containerWidth;
+    
     if (maxScroll > 0) {
       // Calculate percentage of scroll (0 to 100)
       const scrollPercent = (scrollLeft / maxScroll) * 100;
-      // Use percentage positioning for consistency with drag
-      divider.style.left = `${scrollPercent}%`;
-      divider.style.transform = `translate(-50%, -50%)`; // Center both ways
+      // Only update horizontal position, keep vertical position intact
+      const currentTop = divider.style.top;
+      divider.style.left = `${50 + (scrollPercent - 50) * 0.5}%`; // Subtle horizontal movement
+      divider.style.transform = 'translate(-50%, -50%)';
     }
   };
 
-  // Add scroll listener only for mobile
+  // Add scroll listener only for mobile  
   compareContainer.addEventListener("scroll", scrollListener);
-
-  // Initial positioning for mobile
   scrollListener();
 }
 
 function updateLayoutDirection() {
   const wasVertical = isVertical;
   isVertical = window.innerWidth <= 900;
-  // Re-sync when layout changes
+  
+  // If layout direction changed, reinitialize
   if (wasVertical !== isVertical) {
     setTimeout(() => {
+      initializePositions();
       syncDividerWithScroll();
     }, 100);
   }
@@ -113,6 +184,7 @@ function getCoord(event) {
 function startDrag(e) {
   // Only start dragging if the circle was clicked
   if (!e.target.closest(".circle")) return;
+  
   isDragging = true;
   hasMovedEnough = false;
   dragStart = getCoord(e);
@@ -147,32 +219,36 @@ function drag(e) {
   e.stopPropagation();
   e.stopImmediatePropagation();
 
-  const containerRect = compareContainer.getBoundingClientRect();
-  const size = isVertical
-    ? compareContainer.offsetHeight
-    : compareContainer.offsetWidth;
-  const position = isVertical
-    ? currentCoord - containerRect.top
-    : currentCoord - containerRect.left;
-
-  const percent = (position / size) * 100;
-  const boundedPercent = Math.max(0, Math.min(100, percent));
-  // Apply the movement based on layout direction
   if (isVertical) {
-    // Mobile: vertical drag controls height, maintain horizontal scroll sync
-    wrapper.style.height = `${boundedPercent}%`;
-    divider.style.top = `${boundedPercent}%`;
-    divider.style.transform = `translate(-50%, -50%)`;
+    // Mobile: vertical drag from top to bottom
+    const viewportHeight = window.innerHeight;
+    
+    // Use current touch/mouse position relative to viewport
+    const relativeY = Math.max(0, Math.min(viewportHeight, currentCoord));
+    
+    // Calculate percentage based on viewport height
+    const percent = (relativeY / viewportHeight) * 100;
+    
+    // Apply vertical position with container clinging to divider
+    setVerticalPosition(percent);
+    
   } else {
-    // Desktop: horizontal drag controls width
-    wrapper.style.width = `${boundedPercent}%`;
-    divider.style.left = `${boundedPercent}%`;
-    divider.style.transform = `translateX(-50%)`;
+    // Desktop: horizontal drag from left to right
+    const containerRect = compareContainer.getBoundingClientRect();
+    const containerWidth = compareContainer.offsetWidth;
+    const relativeX = currentCoord - containerRect.left;
+    
+    // Calculate percentage based on container width
+    const percent = (relativeX / containerWidth) * 100;
+    
+    // Apply horizontal position
+    setHorizontalPosition(percent);
   }
 }
 
 function stopDrag() {
   if (!isDragging) return;
+  
   isDragging = false;
   dragStart = null;
   hasMovedEnough = false;
@@ -185,25 +261,26 @@ function stopDrag() {
   document.body.style.overflow = "";
   document.body.style.touchAction = "";
 
-  // Re-sync with scroll after drag ends
-  setTimeout(() => {
-    if (scrollListener) scrollListener();
-  }, 50);
+  // Re-sync with scroll after drag ends (mobile only)
+  if (isVertical) {
+    setTimeout(() => {
+      if (scrollListener) scrollListener();
+    }, 50);
+  }
 }
 
-// Export function to check if compare slider is dragging (for pageloader.js)
+// Export function to check if compare slider is dragging
 export const isCompareSliderDragging = () => isDragging;
 
-// Cleanup function (optional)
+// Cleanup function
 export const destroyCompareSlider = () => {
   if (circle) {
     circle.removeEventListener("mousedown", startDrag);
     circle.removeEventListener("touchstart", startDrag);
   }
 
-  if (scrollListener) {
-    compareContainer?.removeEventListener("scroll", scrollListener);
-    wrapper?.removeEventListener("scroll", scrollListener);
+  if (scrollListener && compareContainer) {
+    compareContainer.removeEventListener("scroll", scrollListener);
   }
 
   document.removeEventListener("mousemove", drag);

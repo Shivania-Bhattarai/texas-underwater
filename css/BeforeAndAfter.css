@@ -149,7 +149,7 @@
   .page-6 .img-right-wrapper {
     top: 0;
     left: 0;
-    width: var(--desktop-breakpoint);
+    width: var(--desktop-breakpoint) !important;
     height: 50%;
     overflow: hidden;
     transition: height var(--transition-speed) ease-out;
@@ -161,7 +161,7 @@
 
   .page-6 .img-right {
     height: 100vh;
-    width: var(--desktop-breakpoint);
+    width: var(--desktop-breakpoint) !important;
     object-position: top;
   }
   .page-6 .divider {
@@ -244,5 +244,23 @@
   .page-6 .circle {
     border-color: #000;
     background: #fff;
+  }
+}
+/* Additional Samsung-specific fixes */
+@supports (-webkit-touch-callout: none) {
+  .page-6 .img-right-wrapper {
+    /* WebKit specific positioning fix */
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Force repaint on Samsung browsers */
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+  .page-6 .img-right-wrapper {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
   }
 }
