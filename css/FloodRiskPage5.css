@@ -156,7 +156,7 @@
     width: 90vw;
   }
   .page-5 .right-container {
-    padding-top: 78px;
+    padding-top: 22px;
     padding-left: 0px;
     padding-right: 0px;
   }
@@ -169,11 +169,11 @@
   }
   .page-5.active .image3-wrapper {
     left: 15px;
-    bottom: 25px;
+    bottom: 10%;
   }
   .page-5 .background img.image2 {
     right: 25px;
-    bottom: 35px;
+    bottom: 10%;
   }
   .page-5 .right-container h1 {
     font-size: 30px;

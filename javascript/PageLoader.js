@@ -18,6 +18,7 @@ const pagesToLoad = [
   "./pages/FloodReliefPage10.html",
   "./pages/LastPage.html",
 ];
+
 let currentPage = 0;
 let indicatorTop = 0;
 const indicatorHeight = 25;
@@ -29,7 +30,6 @@ let pageElements = [];
 const loadPageSequentially = async () => {
   for (let i = 0; i < pagesToLoad.length; i++) {
     const url = pagesToLoad[i];
-    // if(i===5){
     try {
       const res = await fetch(url);
       const html = await res.text();
@@ -45,7 +45,6 @@ const loadPageSequentially = async () => {
       console.error("Failed to load:", url, err);
     }
   }
-  // }
 };
 
 const showPage = (index) => {
@@ -53,90 +52,78 @@ const showPage = (index) => {
     element.classList.toggle("active", i === index);
     const isActive = i === index;
 
-    //animate
-    //page2
+    // Page-specific animations
     if (isActive && currentPage === 1) {
       const title = document.querySelector(".title");
       const description = document.querySelector(".description");
-
-      title.classList.add("flyin");
-      description.classList.add("flyin");
+      if (title) title.classList.add("flyin");
+      if (description) description.classList.add("flyin");
       revealPage2Layers();
     } else {
       hidePage2Layers();
     }
-    setTimeout(() => {
-      compare.initCompareSlider();
-    }, 100);
 
-    //page3
+    // Initialize compare slider for page 6 (index 5)
+    if (isActive && currentPage === 5) {
+      setTimeout(() => {
+        compare.initCompareSlider();
+      }, 100);
+    }
+
+    // Other page animations...
     if (isActive && currentPage === 2) {
       const title = element.querySelector(".content-header");
       const description = element.querySelector(".content-body");
-
-      title.classList.add("flyin");
-      description.classList.add("flyin");
+      if (title) title.classList.add("flyin");
+      if (description) description.classList.add("flyin");
       const overlay = element.querySelector(".overlay");
       if (overlay) {
         overlay.style.clipPath = "inset(0 0 0 100%)";
       }
     }
-    //page4
+
     if (isActive && currentPage === 3) {
       const title = element.querySelector(".title");
       const head = element.querySelector(".top-header");
-
       const description = element.querySelector(".description");
-
-      title.classList.add("flyin");
-      description.classList.add("flyin");
-      head.classList.add("flyin");
+      if (title) title.classList.add("flyin");
+      if (description) description.classList.add("flyin");
+      if (head) head.classList.add("flyin");
     }
-    //page5
+
     if (isActive && currentPage === 4) {
       const title = element.querySelector(".title");
       const description = element.querySelector(".description");
-
-      title.classList.add("flyin");
-      description.classList.add("flyin");
+      if (title) title.classList.add("flyin");
+      if (description) description.classList.add("flyin");
     }
-    //page7
+
     if (isActive && currentPage === 6) {
       const title = element.querySelector(".title");
       const description = element.querySelector(".description");
-
-      title.classList.add("flyin");
-      description.classList.add("flyin");
+      if (title) title.classList.add("flyin");
+      if (description) description.classList.add("flyin");
     }
-    //page8
+
     if (isActive && currentPage === 7) {
       const title = element.querySelector(".title");
       const description = element.querySelector(".description");
-      const image = element.querySelector(".death-image");
-
-      title.classList.add("flyin");
-      description.classList.add("flyin");
-      // image.classList.add("scale")
+      if (title) title.classList.add("flyin");
+      if (description) description.classList.add("flyin");
     }
-    //page9
+
     if (isActive && currentPage === 8) {
       const title = element.querySelector(".title");
       const description = element.querySelector(".description");
-      const image = element.querySelector(".cause-image");
-
-      title.classList.add("flyin");
-      description.classList.add("flyin");
-      // image.classList.add("scale")
+      if (title) title.classList.add("flyin");
+      if (description) description.classList.add("flyin");
     }
-    //page10
+
     if (isActive && currentPage === 9) {
       const title = element.querySelector(".title");
       const description = element.querySelector(".description");
-      const image = element.querySelector(".relief-image");
-
-      title.classList.add("flyin");
-      description.classList.add("flyin");
-      // image.classList.add("scale")
+      if (title) title.classList.add("flyin");
+      if (description) description.classList.add("flyin");
     }
   });
 };
@@ -145,55 +132,76 @@ const handleScroll = (e) => {
   e.preventDefault();
   if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
   if (pageElements.length === 0) return;
+  
   const delta = Math.sign(e.deltaY);
-
-  // Calculate step size with mobile optimization
   const isMobile = "ontouchstart" in window;
 
-  let step;
+  let stepSize;
   if (isMobile) {
-    // Same step size for all pages on mobile
-    step = 13;
+    stepSize = 13;
   } else {
-    // different step sizes for different pages on desktop
-    step = currentPage === 2 || currentPage === 1 ? 5 : 11;
+    stepSize = currentPage === 2 || currentPage === 1 ? 5 : 11;
   }
 
   if (delta > 0) {
     if (currentPage < pageElements.length - 1) {
-      indicatorTop += step;
+      indicatorTop += stepSize;
       if (indicatorTop >= maxTop) {
         currentPage++;
         showPage(currentPage);
         indicatorTop = 0;
       }
     } else {
-      indicatorTop = Math.min(indicatorTop + step, maxTop);
+      indicatorTop = Math.min(indicatorTop + stepSize, maxTop);
     }
   } else {
     if (currentPage > 0) {
-      indicatorTop -= step;
+      indicatorTop -= stepSize;
       if (indicatorTop <= 0) {
         currentPage--;
         showPage(currentPage);
         indicatorTop = maxTop;
       }
     } else {
-      indicatorTop = Math.max(indicatorTop - step, 0);
+      indicatorTop = Math.max(indicatorTop - stepSize, 0);
     }
   }
-  indicator.style.top = `${indicatorTop}px`;
-  page3.updatePage3OverlayClip(currentPage, pageElements, indicatorTop, maxTop);
+  
+  if (indicator) {
+    indicator.style.top = `${indicatorTop}px`;
+  }
+  
+  if (page3 && page3.updatePage3OverlayClip) {
+    page3.updatePage3OverlayClip(currentPage, pageElements, indicatorTop, maxTop);
+  }
 };
 
-// SMOOTH MOBILE SWIPE SUPPORT
+// Enhanced touch handling with compare slider awareness
 let touchStartX = 0;
 let touchStartY = 0;
 let isTouching = false;
 
+// Function to check if touch target is specifically the compare slider circle
+function isTouchOnCompareSliderCircle(target) {
+  return target && target.closest('.page-6 .circle') !== null;
+}
+
+// Function to check if we should ignore this touch event
+function shouldIgnoreTouch(target) {
+  // Only ignore if actively dragging the compare slider OR touching the circle specifically
+  return (compare.isCompareSliderDragging && compare.isCompareSliderDragging()) ||
+         isTouchOnCompareSliderCircle(target);
+}
+
 window.addEventListener(
   "touchstart",
   (e) => {
+    // Don't handle touch if it's on the compare slider
+    if (shouldIgnoreTouch(e.target)) {
+      isTouching = false;
+      return;
+    }
+
     touchStartY = e.touches[0].clientY;
     touchStartX = e.touches[0].clientX;
     isTouching = true;
@@ -204,7 +212,14 @@ window.addEventListener(
 window.addEventListener(
   "touchmove",
   (e) => {
+    // Skip if not touching
     if (!isTouching) return;
+    
+    // Only skip if compare slider is actively being dragged
+    if (compare.isCompareSliderDragging && compare.isCompareSliderDragging()) {
+      isTouching = false;
+      return;
+    }
 
     const touchCurrentY = e.touches[0].clientY;
     const touchCurrentX = e.touches[0].clientX;
@@ -214,24 +229,28 @@ window.addEventListener(
 
     // Only handle vertical swipes
     if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 10) {
-      e.preventDefault(); // Prevent default scrolling
+      // Don't prevent default if touching compare slider circle
+      if (!isTouchOnCompareSliderCircle(e.target)) {
+        // e.preventDefault();
 
-      // Create multiple smaller scroll events for smoother movement
-      const steps = Math.ceil(Math.abs(deltaY) / 20);
-      const stepDelta = deltaY / steps;
+        // Create smoother movement with smaller steps
+        const steps = Math.ceil(Math.abs(deltaY) / 20);
+        const stepDelta = deltaY / steps;
 
-      for (let i = 0; i < steps; i++) {
-        setTimeout(() => {
-          const fakeEvent = {
-            deltaY: stepDelta,
-            preventDefault: () => {},
-          };
-          handleScroll(fakeEvent);
-        }, i * 16); // 16ms intervals for smooth 60fps
+        for (let i = 0; i < steps; i++) {
+          setTimeout(() => {
+            const fakeEvent = {
+              deltaY: stepDelta,
+              preventDefault: () => {},
+            };
+            handleScroll(fakeEvent);
+          }, i * 16);
+        }
+        
+        // Reset for continuous scrolling
+        touchStartY = touchCurrentY;
+        touchStartX = touchCurrentX;
       }
-      // Reset touch start position for continuous scrolling
-      touchStartY = touchCurrentY;
-      touchStartX = touchCurrentX;
     }
   },
   { passive: false }
@@ -240,23 +259,20 @@ window.addEventListener(
 window.addEventListener(
   "touchend",
   (e) => {
-    isTouching = false;
-  },
-  { passive: true }
-);
+    // Don't handle if compare slider was actively being dragged
+    if (!isTouching || (compare.isCompareSliderDragging && compare.isCompareSliderDragging())) {
+      isTouching = false;
+      return;
+    }
 
-// Alternative: Simplified approach with better thresholds
-window.addEventListener(
-  "touchend",
-  (e) => {
     const touchEndY = e.changedTouches[0].clientY;
     const touchEndX = e.changedTouches[0].clientX;
 
     const deltaY = touchStartY - touchEndY;
     const deltaX = touchStartX - touchEndX;
-    // Reduced threshold from 50px to 30px for more responsive feel
+    
+    // Handle swipe gesture
     if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 30) {
-      // Scale the delta to match mouse wheel sensitivity
       const scaledDelta = deltaY * 0.5;
 
       const fakeEvent = {
@@ -265,11 +281,23 @@ window.addEventListener(
       };
       handleScroll(fakeEvent);
     }
+    
+    isTouching = false;
   },
   { passive: true }
 );
 
-// MOUSE SCROLL SUPPORT
-window.addEventListener("wheel", handleScroll, { passive: false });
+// Mouse wheel support
+window.addEventListener("wheel", (e) => {
+  // Don't handle wheel events if compare slider is being dragged
+  if (compare.isCompareSliderDragging && compare.isCompareSliderDragging()) {
+    return;
+  }
+  // Don't handle if mouse is specifically over the compare slider circle
+  if (isTouchOnCompareSliderCircle(e.target)) {
+    return;
+  }
+  handleScroll(e);
+}, { passive: false });
 
 window.onload = () => loadPageSequentially();

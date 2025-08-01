@@ -44,6 +44,16 @@
   line-height: 160%;
   letter-spacing: 0.5px;
 }
+.page-9 .background .image-source {
+    display: block;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    color: white;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 140%;
+  }
 
 @media only screen and (max-height: 900px){
   .page-9 .background{
