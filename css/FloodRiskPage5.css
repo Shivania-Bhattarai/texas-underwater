@@ -104,12 +104,12 @@
   display: none;
 }
 
-@media only screen and (max-width: 1240px) {
+@media only screen and (max-width: 1440px) {
   .page-5 .right-container h1 {
-    font-size: 50px;
+    font-size: 48px;
   }
   .page-5 .right-container span {
-    font-size: 50px;
+    font-size: 48px;
   }
   .page-5 .right-container p {
     font-size: 22px;
@@ -123,12 +123,15 @@
     width: 233px;
   }
 }
-@media only screen and (max-height: 950px) {
-  .page-5 .right-container h1 {
-    font-size: 40px;
+@media only screen and (max-width: 1024px){
+  .page-5 .right-container{
+    padding-top: 76px;
+  }
+   .page-5 .right-container h1 {
+    font-size: 39px;
   }
   .page-5 .right-container span {
-    font-size: 40px;
+    font-size: 39px;
   }
   .page-5 .right-container p {
     font-size: 22px;
@@ -136,6 +139,7 @@
 }
 @media only screen and (max-width: 800px) {
   .page-5 .background {
+
     background: linear-gradient(rgba(25, 35, 52, 0.4), rgba(25, 35, 52, 0.4)),
       linear-gradient(0deg, #252b30, #252b30),
       linear-gradient(180deg, rgba(0, 0, 0, 0) 56.9%, #000000 100%),
@@ -156,7 +160,7 @@
     width: 90vw;
   }
   .page-5 .right-container {
-    padding-top: 22px;
+    /* padding-top: 22px; */
     padding-left: 0px;
     padding-right: 0px;
   }
@@ -168,8 +172,8 @@
     width: 100%;
   }
   .page-5.active .image3-wrapper {
-    left: 15px;
-    bottom: 10%;
+    left: 22px;
+    bottom: 8%;
   }
   .page-5 .background img.image2 {
     right: 25px;
@@ -191,14 +195,37 @@
     right: 10px;
   }
 }
+@media only screen and (max-height: 850px) {
+  .page-5 .right-container{
+    padding-top: 22px;
+  }
+  .page-5 .right-container h1 {
+    font-size: 29px;
+  }
+  .page-5 .right-container span {
+    font-size: 29px;
+  }
+  .page-5 .right-container p {
+    font-size: 14px;
+  }
+}
 @media only screen and (max-width: 500px){
-   .page-5.active .image3-wrapper {
+   .page-5.active .image3 {
     height: 100px;
     width: 100px;
   }
   .page-5 .background img.image2 {
-    height: 100px;
+    height: 90px;
     width: 200px;
     
+  }
+   .page-5 .right-container h1 {
+    font-size: 22px;
+  }
+  .page-5 .right-container span {
+    font-size: 22px;
+  }
+  .page-5 .right-container p {
+    font-size: 14px;
   }
 }

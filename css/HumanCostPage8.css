@@ -10,7 +10,7 @@
   padding: 91px 93px 0 175px;
 }
 .page-8 .left-container {
-  max-width: 568px;
+  width: 568px;
   max-height: 857px;
   padding-bottom: 25px;
 }
@@ -50,35 +50,31 @@
     line-height: 140%;
   }
 
-@media only screen and (max-width: 1240px) {
-  .page-8 .background {
-    gap: 35px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 50px;
-  }
-}
-@media only screen and (max-height: 900px){
-  .page-8 .background{
-    gap: 20px;
-    padding-top: 25px;
-  }
-  .page-8 .right-container h1 {
-    font-size: 32px;
+@media only screen and (max-width: 1440px) {
+  
+   .page-8 .right-container h1 {
+    font-size: 49px;
   }
   .page-8 .right-container p {
     font-size: 22px;
   }
   .page-8 .right-container span {
-    font-size: 32px;
+    font-size: 49px;
   }
   .page-8 .left-container .death-image {
-    width: 568px;
-    height: 857px;
+    width: 650px;
+    height: 807px;
   }
-
 }
 
+@media only screen and (max-width: 1240px){
+  .page-8 .background {
+    gap: 35px;
+    padding-left: 22px;
+    padding-right: 15px;
+    padding-top: 50px;
+  }
+}
 @media only screen and (max-width: 1024px) {
   
   .page-8 .background {
@@ -87,13 +83,34 @@
   .page-8 .left-container {
     display: flex;
     justify-content: center;
+    width: 100vw;
   }
+  .page-8 .left-container .death-image {
+    width: 550px;
+    height: 607px;
+  }
+  .page-8 .right-container h1 {
+    font-size: 39px;
+  }
+  .page-8 .right-container p {
+    font-size: 22px;
+  }
+  .page-8 .right-container span {
+    font-size: 39px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .page-8 .background{
+    padding-top: 76px;
+  }
+
   .page-8 .left-container .death-image {
     width: 300px;
     height: 457px;
   }
-    .page-8 .right-container h1 {
-    font-size: 32px;
+  .page-8 .right-container h1 {
+    font-size: 30px;
   }
   .page-8 .right-container p {
     font-size: 16px;
@@ -102,9 +119,37 @@
     font-size: 30px;
   }
 }
-@media only screen and (max-width: 400px){
+@media only screen and (max-height: 800px){
+  .page-8 .background{
+    gap: 15px;
+    padding-top: 22px;
+  }
+  .page-8 .right-container h1 {
+    font-size: 29px;
+  }
+  .page-8 .right-container p {
+    font-size: 14px;
+  }
+  .page-8 .right-container span {
+    font-size: 29px;
+  }
+  .page-8 .left-container .death-image {
+    width: 368px;
+    height: 557px;
+  }
+}
+@media only screen and (max-width: 450px){
  .page-8 .left-container .death-image {
     width: 200px;
     height: 357px;
+  }
+   .page-8 .right-container h1 {
+    font-size: 22px;
+  }
+  .page-8 .right-container p {
+    font-size: 14px;
+  }
+  .page-8 .right-container span {
+    font-size: 22px;
   } 
 }

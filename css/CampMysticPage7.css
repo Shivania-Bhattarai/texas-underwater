@@ -44,33 +44,53 @@
   font-size: 12px;
   line-height: 140%;
 }
+@media only screen and (max-width: 1440px){
+ .page-7 h1 {
+  font-size: 49px;
+}
+.page-7 span {
+  font-size: 49px;
+}
+.page-7 p {
+  max-width: 690px;
+  font-size: 22px;
+ 
+} 
+}
 
 @media only screen and (max-width: 1240px) {
+
   .page-7 .background {
     padding-left: 15px;
-    padding-top: 22px;
+    padding-top: 76px;
     color: #ffffff;
   }
   .page-7 h1 span {
     max-width: 606px;
   }
+   .page-7 .background {
+    padding-top: 78px;
+  }
 }
-@media only screen and (max-height: 900px){
+@media only screen and (max-height: 800px){
+  .page-7 .background {
+    padding-top: 22px;
+  }
    .page-7 h1 {
     width: 95vw;
-    font-size: 30px;
+    font-size: 29px;
     padding-bottom: 22px;
-    padding-left: 15px;
+    padding-left: 22px;
   }
   .page-7 span {
     width: 95vw;
-    font-size: 35px;
+    font-size: 29px;
   }
 
   .page-7 p {
     width: 95vw;
-    font-size: 20px;
-    padding-left: 15px;
+    font-size: 14px;
+    padding-left: 22px;
   } 
 }
 @media only screen and (max-width: 740px) {
@@ -85,7 +105,7 @@
     width: 95vw;
     font-size: 30px;
     padding-bottom: 22px;
-    padding-left: 15px;
+    padding-left: 22px;
   }
   .page-7 span {
     width: 95vw;
@@ -95,9 +115,7 @@
   .page-7 p {
     width: 95vw;
     font-size: 16px;
-    padding-left: 15px;
+    padding-left: 22px;
   }
-  .page-7 .background {
-    padding-top: 78px;
-  }
+ 
 }

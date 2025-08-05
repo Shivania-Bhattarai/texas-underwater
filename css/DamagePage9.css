@@ -55,24 +55,20 @@
     line-height: 140%;
   }
 
-@media only screen and (max-height: 900px){
-  .page-9 .background{
-    padding-top: 25px;
-  }
-  .page-9 .right-container h1 {
-    font-size: 40px;
-    padding-bottom: 20px;
+@media only screen and (max-width: 1440px){
+ .page-9 .right-container h1 {
+    font-size: 49px;
   }
   .page-9 .right-container span {
-    font-size: 40px;
+    font-size: 49px;
   }
   .page-9 .right-container p {
     font-size: 22px;
-  }
+  } 
 }
 @media only screen and (max-width: 1024px) {
   .page-9 .background {
-    padding-left: 15px;
+    padding-left: 22px;
     padding-right: 15px;
     padding-top: 50px;
     flex-direction: column-reverse;
@@ -80,13 +76,29 @@
     gap: 15px;
   }
   .page-9 .left-container{
-    width: 45vw;
+    width: 75vw;
   }
   .page-9 .right-container{
     width: 95vw;
   }
 
   .page-9 .right-container h1 {
+    font-size: 39px;
+    padding-bottom: 20px;
+  }
+  .page-9 .right-container span {
+    font-size: 39px;
+  }
+  .page-9 .right-container p {
+    font-size: 22px;
+  }
+}
+
+@media only screen and (max-width: 900px){
+   .page-9 .background{
+    padding-top: 70px;
+  }
+ .page-9 .right-container h1 {
     font-size: 30px;
     padding-bottom: 20px;
   }
@@ -94,7 +106,22 @@
     font-size: 30px;
   }
   .page-9 .right-container p {
-    font-size: 15px;
+    font-size: 14px;
+  } 
+}
+@media only screen and (max-height: 800px){
+  .page-9 .background{
+    padding-top: 22px;
+  }
+  .page-9 .right-container h1 {
+    font-size: 29px;
+    padding-bottom: 20px;
+  }
+  .page-9 .right-container span {
+    font-size: 29px;
+  }
+  .page-9 .right-container p {
+    font-size: 14px;
   }
 }
 @media only screen and (max-width: 650px){
@@ -104,4 +131,14 @@
   .page-9 .background{
     gap: 35px;
   }
+  .page-9 .right-container h1 {
+    font-size: 23px;
+    padding-bottom: 20px;
+  }
+  .page-9 .right-container span {
+    font-size: 23px;
+  }
+  .page-9 .right-container p {
+    font-size: 14px;
+  } 
 }

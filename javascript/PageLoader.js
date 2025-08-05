@@ -2,7 +2,7 @@ import { revealPage2Layers, hidePage2Layers } from "./GuadalupeRiverPage2.js";
 import * as compare from "./Compare.js";
 import * as page3 from "./FloodImpactPage3.js";
 
-const indicator = document.getElementById("indicator");
+const indicator = document.querySelector("#indicator");
 const container = document.getElementById("page-container");
 
 const pagesToLoad = [
@@ -21,9 +21,9 @@ const pagesToLoad = [
 
 let currentPage = 0;
 let indicatorTop = 0;
-const indicatorHeight = 25;
-const step = 13;
-const stepPage4 = 3;
+const indicatorHeight = 20;
+const step = 15;
+const stepPage4 = 5;
 const maxTop = window.innerHeight - indicatorHeight;
 let pageElements = [];
 
@@ -54,7 +54,7 @@ const showPage = (index) => {
 
     // Page-specific animations
     if (isActive && currentPage === 1) {
-      const title = document.querySelector(".title");
+      const title = document.querySelector(".title-text");
       const description = document.querySelector(".description");
       if (title) title.classList.add("flyin");
       if (description) description.classList.add("flyin");
@@ -128,19 +128,31 @@ const showPage = (index) => {
   });
 };
 
+let lastScrollTime = 0;
+let allowScroll = true;
+
 const handleScroll = (e) => {
   e.preventDefault();
+
+  // Do nothing if not enough time has passed since the last scroll
+  if (!allowScroll) return;
+
   if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
   if (pageElements.length === 0) return;
-  
-  const delta = Math.sign(e.deltaY);
-  const isMobile = "ontouchstart" in window;
 
+  const deltaY = e.deltaY;
+  const delta = Math.sign(deltaY);
+  const now = Date.now();
+
+  // Trackpad vs Mouse detection
+  const isTrackpad = Math.abs(deltaY) < 50 && e.deltaMode === 0;
+   // Step logic
   let stepSize;
-  if (isMobile) {
-    stepSize = 13;
+  if (isTrackpad) {
+    stepSize = currentPage === 1 || currentPage === 2 ? 5 : 11;
   } else {
-    stepSize = currentPage === 2 || currentPage === 1 ? 5 : 11;
+    // Mouse scroll → jump fast
+    stepSize = currentPage === 1 || currentPage === 2 ? 25 : 55;
   }
 
   if (delta > 0) {
@@ -150,6 +162,8 @@ const handleScroll = (e) => {
         currentPage++;
         showPage(currentPage);
         indicatorTop = 0;
+        allowScroll = false;
+        setTimeout(() => (allowScroll = true), 200); // delay before next scroll
       }
     } else {
       indicatorTop = Math.min(indicatorTop + stepSize, maxTop);
@@ -161,18 +175,25 @@ const handleScroll = (e) => {
         currentPage--;
         showPage(currentPage);
         indicatorTop = maxTop;
+        allowScroll = false;
+        setTimeout(() => (allowScroll = true), 200); // delay before next scroll
       }
     } else {
       indicatorTop = Math.max(indicatorTop - stepSize, 0);
     }
   }
-  
+
   if (indicator) {
     indicator.style.top = `${indicatorTop}px`;
   }
-  
+
   if (page3 && page3.updatePage3OverlayClip) {
-    page3.updatePage3OverlayClip(currentPage, pageElements, indicatorTop, maxTop);
+    page3.updatePage3OverlayClip(
+      currentPage,
+      pageElements,
+      indicatorTop,
+      maxTop
+    );
   }
 };
 
@@ -183,14 +204,16 @@ let isTouching = false;
 
 // Function to check if touch target is specifically the compare slider circle
 function isTouchOnCompareSliderCircle(target) {
-  return target && target.closest('.page-6 .circle') !== null;
+  return target && target.closest(".page-6 .circle") !== null;
 }
 
 // Function to check if we should ignore this touch event
 function shouldIgnoreTouch(target) {
   // Only ignore if actively dragging the compare slider OR touching the circle specifically
-  return (compare.isCompareSliderDragging && compare.isCompareSliderDragging()) ||
-         isTouchOnCompareSliderCircle(target);
+  return (
+    (compare.isCompareSliderDragging && compare.isCompareSliderDragging()) ||
+    isTouchOnCompareSliderCircle(target)
+  );
 }
 
 window.addEventListener(
@@ -214,7 +237,7 @@ window.addEventListener(
   (e) => {
     // Skip if not touching
     if (!isTouching) return;
-    
+
     // Only skip if compare slider is actively being dragged
     if (compare.isCompareSliderDragging && compare.isCompareSliderDragging()) {
       isTouching = false;
@@ -234,9 +257,8 @@ window.addEventListener(
         // e.preventDefault();
 
         // Create smoother movement with smaller steps
-        const steps = Math.ceil(Math.abs(deltaY) / 20);
+        const steps = Math.ceil(Math.abs(deltaY) / 30);
         const stepDelta = deltaY / steps;
-
         for (let i = 0; i < steps; i++) {
           setTimeout(() => {
             const fakeEvent = {
@@ -246,7 +268,7 @@ window.addEventListener(
             handleScroll(fakeEvent);
           }, i * 16);
         }
-        
+
         // Reset for continuous scrolling
         touchStartY = touchCurrentY;
         touchStartX = touchCurrentX;
@@ -260,7 +282,10 @@ window.addEventListener(
   "touchend",
   (e) => {
     // Don't handle if compare slider was actively being dragged
-    if (!isTouching || (compare.isCompareSliderDragging && compare.isCompareSliderDragging())) {
+    if (
+      !isTouching ||
+      (compare.isCompareSliderDragging && compare.isCompareSliderDragging())
+    ) {
       isTouching = false;
       return;
     }
@@ -270,7 +295,7 @@ window.addEventListener(
 
     const deltaY = touchStartY - touchEndY;
     const deltaX = touchStartX - touchEndX;
-    
+
     // Handle swipe gesture
     if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 30) {
       const scaledDelta = deltaY * 0.5;
@@ -281,23 +306,27 @@ window.addEventListener(
       };
       handleScroll(fakeEvent);
     }
-    
+
     isTouching = false;
   },
   { passive: true }
 );
 
 // Mouse wheel support
-window.addEventListener("wheel", (e) => {
-  // Don't handle wheel events if compare slider is being dragged
-  if (compare.isCompareSliderDragging && compare.isCompareSliderDragging()) {
-    return;
-  }
-  // Don't handle if mouse is specifically over the compare slider circle
-  if (isTouchOnCompareSliderCircle(e.target)) {
-    return;
-  }
-  handleScroll(e);
-}, { passive: false });
+window.addEventListener(
+  "wheel",
+  (e) => {
+    // Don't handle wheel events if compare slider is being dragged
+    if (compare.isCompareSliderDragging && compare.isCompareSliderDragging()) {
+      return;
+    }
+    // Don't handle if mouse is specifically over the compare slider circle
+    if (isTouchOnCompareSliderCircle(e.target)) {
+      return;
+    }
+    handleScroll(e);
+  },
+  { passive: false }
+);
 
 window.onload = () => loadPageSequentially();
