@@ -40,19 +40,18 @@
   letter-spacing: 0.5px;
 }
 .page-8 .background .image-source {
-    display: block;
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    color: white;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 140%;
-  }
+  display: block;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  color: white;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 140%;
+}
 
 @media only screen and (max-width: 1440px) {
-  
-   .page-8 .right-container h1 {
+  .page-8 .right-container h1 {
     font-size: 49px;
   }
   .page-8 .right-container p {
@@ -67,7 +66,7 @@
   }
 }
 
-@media only screen and (max-width: 1240px){
+@media only screen and (max-width: 1240px) {
   .page-8 .background {
     gap: 35px;
     padding-left: 22px;
@@ -76,7 +75,6 @@
   }
 }
 @media only screen and (max-width: 1024px) {
-  
   .page-8 .background {
     flex-direction: column-reverse;
   }
@@ -101,7 +99,7 @@
 }
 
 @media only screen and (max-width: 900px) {
-  .page-8 .background{
+  .page-8 .background {
     padding-top: 76px;
   }
 
@@ -119,13 +117,14 @@
     font-size: 30px;
   }
 }
-@media only screen and (max-height: 800px){
-  .page-8 .background{
+@media only screen and (max-height: 800px) {
+  .page-8 .background {
     gap: 15px;
     padding-top: 22px;
   }
   .page-8 .right-container h1 {
     font-size: 29px;
+    padding-bottom: 20px;
   }
   .page-8 .right-container p {
     font-size: 14px;
@@ -138,18 +137,19 @@
     height: 557px;
   }
 }
-@media only screen and (max-width: 450px){
- .page-8 .left-container .death-image {
+@media only screen and (max-width: 450px) {
+  .page-8 .left-container .death-image {
     width: 200px;
     height: 357px;
   }
-   .page-8 .right-container h1 {
+  .page-8 .right-container h1 {
     font-size: 22px;
+    padding-bottom: 20px;
   }
   .page-8 .right-container p {
     font-size: 14px;
   }
   .page-8 .right-container span {
     font-size: 22px;
-  } 
+  }
 }
